@@ -60,5 +60,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonsAndDatabases.Data\DungeonsAndDatabases.Data.csproj">
+      <Project>{9f26f012-dbc7-40c4-a58d-3cdb4c410ff4}</Project>
+      <Name>DungeonsAndDatabases.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

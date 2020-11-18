@@ -306,6 +306,20 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonsAndDatabases.Data\DungeonsAndDatabases.Data.csproj">
+      <Project>{9f26f012-dbc7-40c4-a58d-3cdb4c410ff4}</Project>
+      <Name>DungeonsAndDatabases.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonsAndDatabases.Models\DungeonsAndDatabases.Models.csproj">
+      <Project>{fe16aec1-7514-4138-a8f6-e2d37d0aaaeb}</Project>
+      <Name>DungeonsAndDatabases.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonsAndDatabases.Services\DungeonsAndDatabases.Services.csproj">
+      <Project>{189ab82c-3da3-4ff4-a97b-f18ce98908c7}</Project>
+      <Name>DungeonsAndDatabases.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

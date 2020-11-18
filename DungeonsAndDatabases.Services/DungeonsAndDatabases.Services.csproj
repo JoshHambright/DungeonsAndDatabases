@@ -60,5 +60,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonsAndDatabases.Data\DungeonsAndDatabases.Data.csproj">
+      <Project>{9f26f012-dbc7-40c4-a58d-3cdb4c410ff4}</Project>
+      <Name>DungeonsAndDatabases.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonsAndDatabases.Models\DungeonsAndDatabases.Models.csproj">
+      <Project>{fe16aec1-7514-4138-a8f6-e2d37d0aaaeb}</Project>
+      <Name>DungeonsAndDatabases.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

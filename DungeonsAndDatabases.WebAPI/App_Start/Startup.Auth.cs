@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using DungeonsAndDatabases.WebAPI.Providers;
 using DungeonsAndDatabases.WebAPI.Models;
+using DungeonsAndDatabases.Data;
 
 namespace DungeonsAndDatabases.WebAPI
 {

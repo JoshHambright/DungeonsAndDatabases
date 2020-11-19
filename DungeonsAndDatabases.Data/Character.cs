@@ -20,12 +20,13 @@ namespace DungeonsAndDatabases.Data
         [Required]
         public string Level { get; set; }
 
+        //public List<string> Inventory = new List<string>();
+
         
         //[ForeignKey(nameof(Player))] //Foreign key that will be used to assign character to its player
         //public int PlayerID { get; set; }
         
         //public virtual Player Player { get; set; }
         
-        //public List<String> Inventory = new List<String> Inventory();
     }
 }

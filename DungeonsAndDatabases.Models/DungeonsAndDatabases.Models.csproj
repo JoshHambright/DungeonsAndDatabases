@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\CharacterCreate.cs" />
+    <Compile Include="Character\CharacterDetail.cs" />
+    <Compile Include="Character\CharacterEdit.cs" />
+    <Compile Include="Character\CharacterListItem.cs" />
     <Compile Include="Player\PlayerCreate.cs" />
     <Compile Include="Player\PlayerDetails.cs" />
     <Compile Include="Player\PlayerEdit.cs" />
@@ -72,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Campaign\" />
-    <Folder Include="Character\" />
     <Folder Include="Membership\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

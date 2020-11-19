@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.Campaign
 {
-    public class CampaignCreate
+    public class CampaignListView
     {
-        //Model for creating a campaign
+        public int CampaignID { get; set; }
         public string CampaignName { get; set; }
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }
-
     }
 }

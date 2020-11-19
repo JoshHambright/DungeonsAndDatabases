@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Campaign\CampaignCreate.cs" />
+    <Compile Include="Campaign\CampaignDetail.cs" />
+    <Compile Include="Campaign\CampaignListView.cs" />
+    <Compile Include="Campaign\CampaignUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

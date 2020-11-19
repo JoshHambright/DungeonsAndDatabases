@@ -36,9 +36,9 @@ namespace DungeonsAndDatabases.Data
         //Comment lines out as data objects are created
 
         //public DbSet<Character> Characters { get; set; } //<--- Characters DBSet
-        //public DbSet<Player> Players { get; set; } //<--- Players DBSet
+        public DbSet<Player> Players { get; set; } //<--- Players DBSet
         public DbSet<Campaign> Campaigns { get; set; } //<--- Campaigns DBSet
-        //public DbSet<Membership> Memberships { get; set; } //<--- Membership DBSet
+        public DbSet<Membership> Memberships { get; set; } //<--- Membership DBSet
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

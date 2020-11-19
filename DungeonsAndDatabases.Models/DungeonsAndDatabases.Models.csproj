@@ -66,5 +66,11 @@
       <Name>DungeonsAndDatabases.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Campaign\" />
+    <Folder Include="Character\" />
+    <Folder Include="Membership\" />
+    <Folder Include="Player\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,6 +58,11 @@
     <Compile Include="Campaign\CampaignDetail.cs" />
     <Compile Include="Campaign\CampaignListView.cs" />
     <Compile Include="Campaign\CampaignUpdate.cs" />
+    <Compile Include="Player\PlayerCreate.cs" />
+    <Compile Include="Player\PlayerDetails.cs" />
+    <Compile Include="Player\PlayerEdit.cs" />
+    <Compile Include="Player\PlayerListItem.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +78,6 @@
   <ItemGroup>
     <Folder Include="Character\" />
     <Folder Include="Membership\" />
-    <Folder Include="Player\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

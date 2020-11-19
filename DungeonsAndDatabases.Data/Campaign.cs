@@ -18,7 +18,7 @@ namespace DungeonsAndDatabases.Data
         //[ForeignKey(nameof(DungeonMaster))] //Links DungeonMaster Player to the player GUID of the dungeon master
         public Guid DmGuid { get; set; }
         //public virtual Player DungeonMaster { get; set; }
-        //public virtual List<Membership> = new List<Membership>(); //List of characters who are members of this campaign
+        public virtual List<Membership> Memerships = new List<Membership>(); //List of characters who are members of this campaign
 
 
     }

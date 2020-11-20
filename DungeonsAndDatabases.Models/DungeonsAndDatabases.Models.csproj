@@ -53,11 +53,21 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
+
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetails.cs" />
     <Compile Include="PlayerModels\PlayerEdit.cs" />
     <Compile Include="PlayerModels\PlayerListItem.cs" />
+
+    <Compile Include="Character\CharacterCreate.cs" />
+    <Compile Include="Character\CharacterDetail.cs" />
+    <Compile Include="Character\CharacterEdit.cs" />
+    <Compile Include="Character\CharacterListItem.cs" />
+    <Compile Include="Campaign\CampaignCreate.cs" />
+    <Compile Include="Campaign\CampaignDetail.cs" />
+    <Compile Include="Campaign\CampaignListView.cs" />
+    <Compile Include="Campaign\CampaignUpdate.cs" />
+ 
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@ namespace DungeonsAndDatabases.Models.Campaign
         public string CampaignName { get; set; }
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }
-        public virtual Player  DungeonMaster { get; set; }
-        public virtual List<Membership> Memberships = new List<Membership>();
+        //public virtual Player DungeonMaster { get; set; }
+        //public virtual List<Membership> Memberships = new List<Membership>();
     }
 }

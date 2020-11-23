@@ -1,4 +1,4 @@
-﻿using DungeonsAndDatabases.Models.Character;
+﻿using DungeonsAndDatabases.Models.CharacterModels;
 using DungeonsAndDatabases.Services;
 using Microsoft.AspNet.Identity;
 using System;

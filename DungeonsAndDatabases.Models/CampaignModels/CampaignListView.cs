@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Models.Campaign
+namespace DungeonsAndDatabases.Models.CampaignModels
 {
-    public class CampaignUpdate
+    public class CampaignListView
     {
+        public int CampaignID { get; set; }
         public string CampaignName { get; set; }
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }

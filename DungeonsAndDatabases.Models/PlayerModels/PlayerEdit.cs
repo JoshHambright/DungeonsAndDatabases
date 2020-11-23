@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Models.Player
+namespace DungeonsAndDatabases.Models.PlayerModels
 {
     public class PlayerEdit
     {
         public string PlayerName { get; set; }
+       
     }
 }

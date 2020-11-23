@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.Character
 {
-    class CharacterEdit
+    public class CharacterEdit
     {
         public string CharacterName { get; set; }
         public string Race { get; set; }

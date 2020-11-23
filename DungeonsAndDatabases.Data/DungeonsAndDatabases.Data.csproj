@@ -88,6 +88,10 @@
     <Compile Include="Character.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Membership.cs" />
+    <Compile Include="Migrations\202011231527022_workplz.cs" />
+    <Compile Include="Migrations\202011231527022_workplz.Designer.cs">
+      <DependentUpon>202011231527022_workplz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +99,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011231527022_workplz.resx">
+      <DependentUpon>202011231527022_workplz.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

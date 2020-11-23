@@ -8,6 +8,7 @@ namespace DungeonsAndDatabases.Models.PlayerModels
 {
     public class PlayerListItem
     {
+        public Guid PlayerID { get; set; }
         public string PlayerName { get; set; }
     }
 }

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Models.Membership
+namespace DungeonsAndDatabases.Models.MembershipModels
 {
-    class MembershipCreate
+    public class MembershipCreate
     {
+        public int CharacterID { get; set; }
+        public int CampaignID { get; set; }
     }
 }

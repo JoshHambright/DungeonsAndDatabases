@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Models.Character
+namespace DungeonsAndDatabases.Models.CharacterModels
 {
     class CharacterCreate
     {

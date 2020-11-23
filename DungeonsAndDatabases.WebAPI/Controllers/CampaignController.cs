@@ -1,4 +1,4 @@
-﻿using DungeonsAndDatabases.Models.Campaign;
+﻿using DungeonsAndDatabases.Models.CampaignModels;
 using DungeonsAndDatabases.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,7 +13,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 {
     public class CampaignController : ApiController
     {
-        public CampaignService CreateCampaignService()
+        private CampaignService CreateCampaignService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var campaignService = new CampaignService(userId);

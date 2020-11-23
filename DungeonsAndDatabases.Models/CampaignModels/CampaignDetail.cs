@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Models.Campaign
+namespace DungeonsAndDatabases.Models.CampaignModels
 {
     public class CampaignDetail
     {
@@ -15,6 +15,7 @@ namespace DungeonsAndDatabases.Models.Campaign
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }
         //public virtual Player DungeonMaster { get; set; }
-        //public virtual List<Membership> Memberships = new List<Membership>();
+        //public virtual List<CharacterListItems> Memberships = new List<CharacterListItems>();
+        
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
-using DungeonsAndDatabases.Models.Campaign;
+using DungeonsAndDatabases.Models.CampaignModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -66,9 +66,9 @@ namespace DungeonsAndDatabases.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Campaigns.FindAsync(id);
-                    ctx
-                        .Campaigns
-                        .Single(e => e.CampaignID == id);
+                    //ctx
+                    //    .Campaigns
+                    //    .Single(e => e.CampaignID == id);
                 return
                     new CampaignDetail
                     {

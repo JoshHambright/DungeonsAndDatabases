@@ -36,7 +36,7 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
+                var query = await
                     ctx
                         .Players
                         .Select(
@@ -45,8 +45,7 @@ namespace DungeonsAndDatabases.Services
                                 {
                                     PlayerName = e.PlayerName
                                 }
-                        );
-                await query.ToListAsync();
+                        ).ToListAsync();
                 return query;
             }
         }

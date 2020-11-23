@@ -42,10 +42,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         
         //Get Campaign by ID
         [HttpGet]
-        public IHttpActionResult GetCampaignByID(int id)
+        public async Task <IHttpActionResult> GetCampaignByID(int id)
         {
             CampaignService campaignService = CreateCampaignService();
-            var campaign = campaignService.GetCampaignById(id);
+            var campaign = await campaignService.GetCampaignById(id);
             if (campaign == null)
                 return NotFound();
             return Ok(campaign);

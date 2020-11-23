@@ -14,8 +14,13 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         public string CampaignName { get; set; }
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }
+<<<<<<< HEAD:DungeonsAndDatabases.Models/CampaignModels/CampaignDetail.cs
         //public virtual Player DungeonMaster { get; set; }
         //public virtual List<CharacterListItems> Memberships = new List<CharacterListItems>();
         
+=======
+        //public virtual Player  DungeonMaster { get; set; }
+        //public virtual List<Membership> Memberships = new List<Membership>();
+>>>>>>> 12b5ec7 (Character service and controller):DungeonsAndDatabases.Models/Campaign/CampaignDetail.cs
     }
 }

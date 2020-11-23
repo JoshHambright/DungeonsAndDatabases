@@ -66,26 +66,26 @@ namespace DungeonsAndDatabases.Services
             }
         }
         //Update
-        public async Task<bool> UpdatePlayer(string name, PlayerEdit model)
+        public async Task<bool> UpdatePlayer(Guid id, PlayerEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Players
-                        .Single(e => e.PlayerName == name);
+                        .Single(e => e.PlayerID == id);
                 entity.PlayerName = model.PlayerName;
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
         //Delete
-        public async Task<bool> DeletePlayer(string name)
+        public async Task<bool> DeletePlayer(Guid id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx
                     .Players
-                    .Single(e => e.PlayerName == name);
+                    .Single(e => e.PlayerID == id);
                 ctx.Players.Remove(entity);
 
                 return await ctx.SaveChangesAsync() == 1;

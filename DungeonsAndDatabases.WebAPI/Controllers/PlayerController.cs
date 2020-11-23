@@ -1,5 +1,4 @@
-﻿using DungeonsAndDatabases.Data;
-using DungeonsAndDatabases.Models.PlayerModels;
+﻿using DungeonsAndDatabases.Models.PlayerModels;
 using DungeonsAndDatabases.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -22,28 +21,28 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return playerService;
         }
         // Create 
-        public IHttpActionResult CreatePlayer(PlayerCreate player)
+        public async Task<IHttpActionResult> CreatePlayer(PlayerCreate player)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreatePlayerService();
-            if (!service.CreatePlayer(player).Result)
+            if (await service.CreatePlayer(player) == false)
                 return InternalServerError();
             return Ok();
         }
         //Read
         [HttpGet]
-        public IHttpActionResult GetPlayers()
+        public async Task<IHttpActionResult> GetPlayers()
         {
             PlayerService playerService = CreatePlayerService();
-            var players = playerService.GetPlayers();
+            var players = await playerService.GetPlayers();
             return Ok(players);
         }
         [HttpGet]
-        public IHttpActionResult GetPlayerByID(Guid id)
+        public async Task<IHttpActionResult> GetPlayerByID(Guid id)
         {
             PlayerService playerService = CreatePlayerService();
-            var player = playerService.GetPlayerById(id);
+            var player = await playerService.GetPlayerById(id);
             if (player == null)
                 return NotFound();
             return Ok(player);
@@ -53,20 +52,20 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
       
         //Updated
         [HttpPut]
-        public IHttpActionResult UpdatePlayer([FromUri] string name, [FromBody] PlayerEdit player)
+        public async Task<IHttpActionResult> UpdatePlayer([FromUri] string name, [FromBody] PlayerEdit player)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreatePlayerService();
-            if (!service.UpdatePlayer(name, player).Result)
+            if (await service.UpdatePlayer(name, player) == false)
                 return InternalServerError();
             return Ok();
         }
         [HttpDelete]
-        public IHttpActionResult DeletePlayer(string name)
+        public async Task<IHttpActionResult> DeletePlayer(string name)
         {
             var service = CreatePlayerService();
-            if (!service.DeletePlayer(name).Result)
+            if (await service.DeletePlayer(name) == false)
                 return InternalServerError();
             return Ok();
         }

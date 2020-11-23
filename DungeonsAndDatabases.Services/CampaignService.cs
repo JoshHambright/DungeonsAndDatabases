@@ -64,18 +64,23 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = await ctx.Campaigns.FindAsync(id);
+                var entity = await ctx.Campaigns
+                    .Where(
+                        x => x.CampaignID == id).FirstOrDefaultAsync();
+                    
                     //ctx
                     //    .Campaigns
                     //    .Single(e => e.CampaignID == id);
-                return
-                    new CampaignDetail
+                
+                    var campaignDetail =  new CampaignDetail
                     {
                         CampaignID = entity.CampaignID,
                         CampaignName = entity.CampaignName,
                         GameSystem = entity.GameSystem,
                         DmGuid = entity.DmGuid
                     };
+                return campaignDetail;
+
             }
         }
         //Update a campaign 

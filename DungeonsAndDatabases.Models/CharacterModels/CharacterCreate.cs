@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.CharacterModels
 {
-    class CharacterCreate
+    public class CharacterCreate
     {
         [Required]
         public string CharacterName { get; set; }

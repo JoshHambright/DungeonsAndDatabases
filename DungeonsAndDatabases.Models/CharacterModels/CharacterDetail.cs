@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.CharacterModels
 {
-    class CharacterDetail
+    public class CharacterDetail
     {
-        public int PlayerID { get; set; }
+        public Guid PlayerID { get; set; }
         public string CharacterName { get; set; }
         public string Race { get; set; }
         public string Class { get; set; }

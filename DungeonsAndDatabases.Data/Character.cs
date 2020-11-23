@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace DungeonsAndDatabases.Data
 
         
         //[ForeignKey(nameof(Player))] //Foreign key that will be used to assign character to its player
-        //public int PlayerID { get; set; }
+        //public Guid PlayerID { get; set; }
         
         //public virtual Player Player { get; set; }
         

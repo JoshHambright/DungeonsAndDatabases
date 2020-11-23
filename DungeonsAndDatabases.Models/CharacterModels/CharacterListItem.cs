@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.CharacterModels
 {
-    class CharacterListItem
+    public class CharacterListItem
     {
         public string CharacterName { get; set; }
         public string Level { get; set; }

@@ -1,5 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
-using DungeonsAndDatabases.Models.Character;
+using DungeonsAndDatabases.Models.CharacterModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

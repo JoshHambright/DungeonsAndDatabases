@@ -19,23 +19,24 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var campaignService = new CampaignService(userId);
             return campaignService;
         }
-        public IHttpActionResult Post(CampaignCreate campaign)
+        public async Task<IHttpActionResult> Post(CampaignCreate campaign)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignService();
 
-            if (!service.CreateCampaign(campaign).Result)
+            var result =  await service.CreateCampaign(campaign);
+            if (result == false)
                 return InternalServerError();
             return Ok();
 
         }
         //Get all campaigns
         [HttpGet]
-        public IHttpActionResult GetAllCampaigns()
+        public async Task <IHttpActionResult> GetAllCampaigns()
         {
             CampaignService campaignService = CreateCampaignService();
-            var campaigns = campaignService.GetCampaigns();
+            var campaigns = await campaignService.GetCampaigns();
             return Ok(campaigns);
         }
         
@@ -52,23 +53,25 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 
         //Update a Campaign
         [HttpPut]
-        public IHttpActionResult UpdateCampaign([FromUri] int id, [FromBody] CampaignUpdate campaign)
+        public async Task<IHttpActionResult> UpdateCampaign([FromUri] int id, [FromBody] CampaignUpdate campaign)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignService();
-
-            if (!service.UpdateCampaign(id,campaign).Result)
+           
+            var result = await service.UpdateCampaign(id,campaign);
+            if (result == false)
                 return InternalServerError();
             return Ok();
         }
 
         //Delete a Campaign
         [HttpDelete]
-        public IHttpActionResult DeleteCampaign(int id)
+        public async Task<IHttpActionResult> DeleteCampaign(int id)
         {
             var service = CreateCampaignService();
-            if (!service.DeleteCampaign(id).Result)
+            var campaign = await service.DeleteCampaign(id);
+            if (campaign == false)
                 return InternalServerError();
             return Ok();
         }

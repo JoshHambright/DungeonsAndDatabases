@@ -70,7 +70,7 @@ namespace DungeonsAndDatabases.Services
                     CampaignId = entity.CampaignId,
                     CharacterId = entity.CharacterId,
                     //Campaign = entity.Campaign,
-                    //Character = entity.Character
+                    //)Character = entity.Character
                 };
                 return membershipDetail;
             }

@@ -52,20 +52,20 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 
         //Updated
         [HttpPut]
-        public async Task<IHttpActionResult> UpdatePlayer([FromUri] string name, [FromBody] PlayerEdit player)
+        public async Task<IHttpActionResult> UpdatePlayer([FromUri] Guid id, [FromBody] PlayerEdit player)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreatePlayerService();
-            if (await service.UpdatePlayer(name, player) == false)
+            if (await service.UpdatePlayer(id, player) == false)
                 return InternalServerError();
             return Ok();
         }
         [HttpDelete]
-        public async Task<IHttpActionResult> DeletePlayer(string name)
+        public async Task<IHttpActionResult> DeletePlayer(Guid id)
         {
             var service = CreatePlayerService();
-            if (await service.DeletePlayer(name) == false)
+            if (await service.DeletePlayer(id) == false)
                 return InternalServerError();
             return Ok();
         }

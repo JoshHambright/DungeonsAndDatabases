@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetails.cs" />
     <Compile Include="PlayerModels\PlayerEdit.cs" />
@@ -69,6 +70,22 @@
     <Compile Include="Campaign\CampaignDetail.cs" />
     <Compile Include="Campaign\CampaignListView.cs" />
     <Compile Include="Campaign\CampaignUpdate.cs" />
+
+    <Compile Include="CharacterModels\CharacterCreate.cs" />
+    <Compile Include="CharacterModels\CharacterDetail.cs" />
+    <Compile Include="CharacterModels\CharacterEdit.cs" />
+    <Compile Include="CharacterModels\CharacterListItem.cs" />
+    <Compile Include="CampaignModels\CampaignCreate.cs" />
+    <Compile Include="CampaignModels\CampaignDetail.cs" />
+    <Compile Include="CampaignModels\CampaignListView.cs" />
+    <Compile Include="CampaignModels\CampaignUpdate.cs" />
+    <Compile Include="MembershipModels\MembershipCreate.cs" />
+    <Compile Include="MembershipModels\MembershipDetails.cs" />
+    <Compile Include="Player\PlayerCreate.cs" />
+    <Compile Include="Player\PlayerDetails.cs" />
+    <Compile Include="Player\PlayerEdit.cs" />
+    <Compile Include="Player\PlayerListItem.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +98,13 @@
       <Name>DungeonsAndDatabases.Data</Name>
     </ProjectReference>
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Membership\" />
   </ItemGroup>
+
+  <ItemGroup />
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

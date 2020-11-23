@@ -1,5 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
-using DungeonsAndDatabases.Models.Campaign;
+using DungeonsAndDatabases.Models.CampaignModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -42,7 +42,7 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                 var query =
+                 var query = await
                     ctx
                         .Campaigns
                         .Select(
@@ -54,8 +54,7 @@ namespace DungeonsAndDatabases.Services
                                     GameSystem = e.GameSystem,
                                     DmGuid = e.DmGuid
                                 }
-                        );
-                await query.ToListAsync();
+                        ).ToListAsync();
                 return query;
             }
             
@@ -66,9 +65,9 @@ namespace DungeonsAndDatabases.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Campaigns.FindAsync(id);
-                    ctx
-                        .Campaigns
-                        .Single(e => e.CampaignID == id);
+                    //ctx
+                    //    .Campaigns
+                    //    .Single(e => e.CampaignID == id);
                 return
                     new CampaignDetail
                     {
@@ -84,10 +83,9 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Campaigns
-                        .Single(e => e.CampaignID == id);
+                var entity = await ctx.Campaigns
+                    .Where(
+                        e => e.CampaignID == id).FirstOrDefaultAsync();
                 entity.CampaignName = model.CampaignName;
                 entity.GameSystem = model.GameSystem;
                 entity.DmGuid = model.DmGuid;
@@ -99,12 +97,10 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Campaigns
-                        .Single(e => e.CampaignID == id);
+                var entity = await ctx.Campaigns
+                    .Where(
+                        e => e.CampaignID == id).FirstOrDefaultAsync();
                 ctx.Campaigns.Remove(entity);
-
                 return await ctx.SaveChangesAsync() == 1;
             }
         }

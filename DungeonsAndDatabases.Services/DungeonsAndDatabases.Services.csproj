@@ -68,6 +68,11 @@
   <ItemGroup>
     <Compile Include="PlayerService.cs" />
     <Compile Include="CampaignService.cs" />
+
+    
+    <Compile Include="MembershipService.cs" />
+
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

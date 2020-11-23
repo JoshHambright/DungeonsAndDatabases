@@ -10,7 +10,7 @@ namespace DungeonsAndDatabases.Data
     public class Player
     {
         [Key]
-        public Guid PlayerID { get; set; }
+        public Guid PlayerID { get; set; } = Guid.NewGuid();
         [Required]
         public string PlayerName { get; set; }
 

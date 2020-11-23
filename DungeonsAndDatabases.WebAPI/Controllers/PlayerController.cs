@@ -13,8 +13,8 @@ using System.Web.Http;
 namespace DungeonsAndDatabases.WebAPI.Controllers
 {
     public class PlayerController : ApiController
-    { 
-        public PlayerService  CreatePlayerService()
+    {
+        private PlayerService CreatePlayerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var playerService = new PlayerService(userId);
@@ -47,9 +47,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return NotFound();
             return Ok(player);
         }
-        
-        
-      
+
+
+
         //Updated
         [HttpPut]
         public async Task<IHttpActionResult> UpdatePlayer([FromUri] string name, [FromBody] PlayerEdit player)

@@ -9,6 +9,7 @@ namespace DungeonsAndDatabases.Models.PlayerModels
 {
     public class PlayerEdit
     {
+        public Guid PlayerId { get; set; }
         public string PlayerName { get; set; }
        
     }

@@ -9,6 +9,7 @@ namespace DungeonsAndDatabases.Models.PlayerModels
 {
     public class PlayerCreate
     {
+        public Guid PlayerID { get; set; }
         [Required]
         public string PlayerName { get; set; }
     }

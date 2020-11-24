@@ -87,16 +87,15 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Characters
-                        .Single(e => e.CharacterID == id);
+                var entity = await ctx.Characters
+                        .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                    //ctx
+                    //    .Characters
+                    //    .Single(e => e.CharacterID == id);
                 entity.CharacterName = model.CharacterName;
                 entity.Race = model.Race;
                 entity.Class = model.Class;
                 entity.Level = model.Level;
-
-
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
@@ -105,10 +104,12 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Characters
-                        .Single(e => e.CharacterID == id);
+                var entity = await ctx.Characters
+                    .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                    
+                    //ctx
+                    //    .Characters
+                    //    .Single(e => e.CharacterID == id);
                 ctx.Characters.Remove(entity);
 
                 return await ctx.SaveChangesAsync() == 1;

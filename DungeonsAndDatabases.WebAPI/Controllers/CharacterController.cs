@@ -65,8 +65,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var service = CreateCharacterService();
 
             var result = await service.UpdateCharacter(id, character);
-
-            if (!service.UpdateCharacter(id, character).Result)
+            if (result == false)
                 return InternalServerError();
             return Ok();
         }
@@ -79,7 +78,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 
             var result = await service.DeleteCharacter(id);
 
-            if (!service.DeleteCharacter(id).Result)
+            if (result == false)
                 return InternalServerError();
             return Ok();
         }

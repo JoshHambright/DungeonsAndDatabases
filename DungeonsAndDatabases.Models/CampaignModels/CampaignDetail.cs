@@ -1,4 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.MembershipModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         public string CampaignName { get; set; }
         public string GameSystem { get; set; }
         public Guid DmGuid { get; set; }
-        
+        public string DmName { get; set; }
         //public virtual Player  DungeonMaster { get; set; }
-        //public virtual List<Membership> Memberships = new List<Membership>();
+        public virtual List<MembershipWithPlayerName> Memberships { get; set; } = new List<MembershipWithPlayerName>();
     }
 }

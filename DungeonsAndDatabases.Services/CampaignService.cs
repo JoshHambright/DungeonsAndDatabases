@@ -1,5 +1,6 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.MembershipModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -77,7 +78,18 @@ namespace DungeonsAndDatabases.Services
                         CampaignID = entity.CampaignID,
                         CampaignName = entity.CampaignName,
                         GameSystem = entity.GameSystem,
-                        DmGuid = entity.DmGuid
+                        DmGuid = entity.DmGuid,
+                        DmName = entity.DungeonMaster.PlayerName,
+                        Memberships = entity.Memberships.Select(
+                            e => 
+                            new MembershipWithPlayerName { 
+                                CampaignId = e.CampaignId,
+                                CampaignName = e.Campaign.CampaignName,
+                                CharacterId = e.CharacterID,
+                                CharacterName = e.Character.CharacterName,
+                                PlayerName = e.Character.Player.PlayerName
+                            }
+                            ).ToList()
                     };
                 return campaignDetail;
 

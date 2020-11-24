@@ -8,6 +8,7 @@ namespace DungeonsAndDatabases.Models.CharacterModels
 {
     public class CharacterListItem
     {
+        public int CharacterId { get; set; }
         public string CharacterName { get; set; }
         public string Level { get; set; }
     }

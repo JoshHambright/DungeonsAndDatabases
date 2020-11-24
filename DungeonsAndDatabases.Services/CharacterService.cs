@@ -52,6 +52,7 @@ namespace DungeonsAndDatabases.Services
                             e =>
                                 new CharacterListItem
                                 {
+                                    CharacterId = e.CharacterID,
                                     CharacterName = e.CharacterName,
                                     Level = e.Level
                                 }

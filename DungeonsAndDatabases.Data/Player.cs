@@ -17,6 +17,6 @@ namespace DungeonsAndDatabases.Data
 
         public virtual List<Character> Characters { get; set; } = new List<Character>();
         public virtual List<Campaign> Campaigns { get; set; } = new List<Campaign>();
-       // public virtual List<MembershipDetails> CharacterCampaign { get; set; } = new List<MembershipDetails>();
+        //public virtual List<MembershipDetials> CharacterCampaign { get; set; } = new List<Membership>();
     }
 }

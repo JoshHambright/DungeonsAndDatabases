@@ -1,5 +1,7 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.CampaignModels;
 using DungeonsAndDatabases.Models.CharacterModels;
+using DungeonsAndDatabases.Models.MembershipModels;
 using DungeonsAndDatabases.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
@@ -64,6 +66,7 @@ namespace DungeonsAndDatabases.Services
                     {
                         PlayerName = entity.PlayerName,
                         PlayerID = entity.PlayerID,
+
                         Characters = entity.Characters.Select(
                             e =>
                             new CharacterListItem
@@ -73,9 +76,30 @@ namespace DungeonsAndDatabases.Services
                                 Level = e.Level,
                                 PlayerID = e.PlayerID
 
-                                
+
                             }
-                            ).ToList()
+                            ).ToList(),
+                        CharacterCampaigns = entity.Campaigns.Select(
+
+                            e =>
+                            new CampaignListViewWithCharacter
+                            {
+                                CampaignID = e.CampaignID,
+                                CampaignName = e.CampaignName,
+                                GameSystem = e.GameSystem,
+                                DmName = e.DungeonMaster.PlayerName,
+                                Characters = e.Memberships.Select(
+                                    x => new CharacterDetail
+                                    {
+                                        PlayerID = x.Character.Player.PlayerID,
+                                        CharacterName = x.Character.CharacterName,
+                                        Race = x.Character.Race,
+                                        Class = x.Character.Class,
+                                        Level = x.Character.Level
+                                    }
+                                    ).ToList()
+                            })
+                            .ToList()
                     };
             }
         }

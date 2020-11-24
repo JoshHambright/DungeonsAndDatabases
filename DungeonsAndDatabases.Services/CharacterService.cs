@@ -29,7 +29,7 @@ namespace DungeonsAndDatabases.Services
                 Race = model.Race,
                 Class = model.Class,
                 Level = model.Level,
-                PlayerID = model.PlayerID
+                PlayerID = _userId
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -92,13 +92,16 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                    //ctx
+                //if (entity.PlayerID != _userId)
+                //    return false;
+                //ctx
                     //    .Characters
                     //    .Single(e => e.CharacterID == id);
                 entity.CharacterName = model.CharacterName;
                 entity.Race = model.Race;
                 entity.Class = model.Class;
                 entity.Level = model.Level;
+                
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
@@ -108,7 +111,7 @@ namespace DungeonsAndDatabases.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Characters
-                    .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                    .Where(e => e.CharacterID == id && e.PlayerID == _userId).FirstOrDefaultAsync();
                     
                     //ctx
                     //    .Characters
@@ -118,5 +121,18 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        public async Task<bool> CheckCharCredentials(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Characters
+                        .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                if (entity.PlayerID != _userId)
+                    return false;
+                return true;
+            }
+        }
     }
+
 }

@@ -57,7 +57,8 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreatePlayerService();
-            if (await service.UpdatePlayer(id, player) == false)
+            var result = await service.UpdatePlayer(id, player);
+            if (result == false)
                 return InternalServerError();
             return Ok();
         }
@@ -65,7 +66,8 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> DeletePlayer(Guid id)
         {
             var service = CreatePlayerService();
-            if (await service.DeletePlayer(id) == false)
+            var campaign = await service.DeletePlayer(id);
+            if (campaign == false)
                 return InternalServerError();
             return Ok();
         }

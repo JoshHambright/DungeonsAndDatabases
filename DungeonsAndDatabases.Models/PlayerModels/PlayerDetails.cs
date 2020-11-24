@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DungeonsAndDatabases.Models.CharacterModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace DungeonsAndDatabases.Models.PlayerModels
     {
         public Guid PlayerID { get; set; }
         public string PlayerName { get; set; }
+        public virtual List<CharacterListItem> Characters { get; set; } = new List<CharacterListItem>();
     }
 }

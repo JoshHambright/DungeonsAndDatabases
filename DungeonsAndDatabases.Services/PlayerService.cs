@@ -1,4 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.CharacterModels;
 using DungeonsAndDatabases.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,19 @@ namespace DungeonsAndDatabases.Services
                     new PlayerDetails
                     {
                         PlayerName = entity.PlayerName,
-                        PlayerID = entity.PlayerID
+                        PlayerID = entity.PlayerID,
+                        Characters = entity.Characters.Select(
+                            e =>
+                            new CharacterListItem
+                            {
+                                CharacterId = e.CharacterID,
+                                CharacterName = e.CharacterName,
+                                Level = e.Level,
+                                PlayerID = e.PlayerID
+
+                                
+                            }
+                            ).ToList()
                     };
             }
         }

@@ -28,7 +28,8 @@ namespace DungeonsAndDatabases.Services
                 CharacterName = model.CharacterName,
                 Race = model.Race,
                 Class = model.Class,
-                Level = model.Level
+                Level = model.Level,
+                PlayerID = model.PlayerID
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,20 +49,22 @@ namespace DungeonsAndDatabases.Services
                 var query =
                 ctx
                         .Characters
-                        .Select(
+                        //.Where(e => e.PlayerID == _userId).FirstOrDefaultAsync()
+                        .Select(                    
                             e =>
                                 new CharacterListItem
                                 {
                                     CharacterId = e.CharacterID,
                                     CharacterName = e.CharacterName,
-                                    Level = e.Level
+                                    Level = e.Level,
+                                    PlayerID = e.PlayerID
                                 }
                         );
                 return await query.ToArrayAsync();
             }
         }
 
-        //Get Character by ID
+        //Get Character by CharacterID
         public async Task<CharacterDetail> GetCharacter(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -74,7 +77,7 @@ namespace DungeonsAndDatabases.Services
                 return
                     new CharacterDetail
                     {
-                        //PlayerID = cat.PlayerID,
+                        PlayerID = cat.PlayerID,
                         CharacterName = cat.CharacterName,
                         Race = cat.Race,
                         Class = cat.Class,
@@ -99,7 +102,7 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-        //Delete a character
+        //Delete a character by Character ID
         public async Task<bool> DeleteCharacter(int id)
         {
             using (var ctx = new ApplicationDbContext())

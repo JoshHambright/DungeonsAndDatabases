@@ -43,6 +43,7 @@ namespace DungeonsAndDatabases.Services
                             e =>
                                 new PlayerListItem
                                 {
+                                    PlayerID = e.PlayerID,
                                     PlayerName = e.PlayerName
                                 }
                         ).ToListAsync();

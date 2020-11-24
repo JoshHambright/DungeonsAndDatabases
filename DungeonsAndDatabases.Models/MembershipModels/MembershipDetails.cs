@@ -11,8 +11,8 @@ namespace DungeonsAndDatabases.Models.MembershipModels
     public class MembershipDetails
     {
         public int CampaignId { get; set; }
-        public virtual Campaign Campaign { get; set; }
+        public virtual string CampaignName { get; set; }
         public int CharacterId { get; set; }
-        public virtual Character Character { get; set; }
+        public virtual string CharacterName { get; set; }
     }
 }

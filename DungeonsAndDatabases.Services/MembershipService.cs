@@ -25,7 +25,7 @@ namespace DungeonsAndDatabases.Services
             var entity =
                 new Membership()
                 {
-                    CharacterId = model.CharacterID,
+                    CharacterID = model.CharacterID,
                     CampaignId = model.CampaignID
                 };
             using (var ctx = new ApplicationDbContext())
@@ -47,9 +47,9 @@ namespace DungeonsAndDatabases.Services
                                 new MembershipDetails
                                 {
                                     CampaignId = e.CampaignId,
-                                    //Campaign = e.Campaign,
-                                    CharacterId = e.CharacterId,
-                                    //Character = e.Character
+                                    CampaignName = e.Campaign.CampaignName,
+                                    CharacterId = e.CharacterID,
+                                    CharacterName = e.Character.CharacterName
                                 }
                         ).ToListAsync();
                 return query;
@@ -63,14 +63,14 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Memberships
                     .Where(
-                        x => x.CampaignId == campaignId && x.CharacterId == characterId)
+                        x => x.CampaignId == campaignId && x.CharacterID == characterId)
                         .FirstOrDefaultAsync();
                 var membershipDetail = new MembershipDetails
                 {
                     CampaignId = entity.CampaignId,
-                    CharacterId = entity.CharacterId,
-                    //Campaign = entity.Campaign,
-                    //)Character = entity.Character
+                    CampaignName = entity.Campaign.CampaignName,
+                    CharacterId = entity.CharacterID,
+                    CharacterName = entity.Character.CharacterName
                 };
                 return membershipDetail;
             }
@@ -83,7 +83,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Memberships
                     .Where(
-                        x => x.CampaignId == campaignId && x.CharacterId == characterId)
+                        x => x.CampaignId == campaignId && x.CharacterID == characterId)
                         .FirstOrDefaultAsync();
                 ctx.Memberships.Remove(entity);
 

@@ -63,7 +63,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCharacterService();
-
+            var credentials = await service.CheckCharCredentials(id);
+            if (credentials == false)
+                return Unauthorized();
             var result = await service.UpdateCharacter(id, character);
             if (result == false)
                 return InternalServerError();
@@ -75,7 +77,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> DeleteCharacter(int id)
         {
             var service = CreateCharacterService();
-
+            var credentials = await service.CheckCharCredentials(id);
+            if (credentials == false)
+                return Unauthorized();
             var result = await service.DeleteCharacter(id);
 
             if (result == false)

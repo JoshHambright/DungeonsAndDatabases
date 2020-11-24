@@ -26,7 +26,8 @@ namespace DungeonsAndDatabases.Services
         {
             var entity = new Player()
             {
-                PlayerName = model.PlayerName
+                PlayerName = model.PlayerName,
+                PlayerID = _playerId
             };
             using (var ctx = new ApplicationDbContext())
             {

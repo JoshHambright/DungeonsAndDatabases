@@ -28,7 +28,7 @@ namespace DungeonsAndDatabases.Services
                 {
                     CampaignName = model.CampaignName,
                     GameSystem = model.GameSystem,
-                    DmGuid = model.DmGuid
+                    DmGuid = _userId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -105,7 +105,7 @@ namespace DungeonsAndDatabases.Services
                         e => e.CampaignID == id).FirstOrDefaultAsync();
                 entity.CampaignName = model.CampaignName;
                 entity.GameSystem = model.GameSystem;
-                entity.DmGuid = model.DmGuid;
+                //entity.DmGuid = model.DmGuid;
                 return await ctx.SaveChangesAsync() == 1;
             }
         }

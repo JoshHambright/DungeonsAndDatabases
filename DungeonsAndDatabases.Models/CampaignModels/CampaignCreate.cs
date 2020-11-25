@@ -14,7 +14,6 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         public string CampaignName { get; set; }
         [Required]
         public string GameSystem { get; set; }
-        [Required]
         public Guid DmGuid { get; set; }
 
     }

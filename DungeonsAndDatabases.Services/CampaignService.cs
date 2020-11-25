@@ -121,5 +121,17 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        public async Task<bool> CheckDMCredentials(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Campaigns
+                    .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
+                if (entity.DmGuid != _userId)
+                    return false;
+                return true;
+            }
+        }
     }
 }

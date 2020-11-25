@@ -1,6 +1,7 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
 using DungeonsAndDatabases.Models.MembershipModels;
+using DungeonsAndDatabases.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -43,22 +44,22 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                 var query = await
-                    ctx
-                        .Campaigns
-                        .Select(
-                            e =>
-                                new CampaignListView
-                                {
-                                    CampaignID = e.CampaignID,
-                                    CampaignName = e.CampaignName,
-                                    GameSystem = e.GameSystem,
-                                    DmGuid = e.DmGuid
-                                }
-                        ).ToListAsync();
+                var query = await
+                   ctx
+                       .Campaigns
+                       .Where(e => e.DmGuid == _userId || e.Memberships.Any(x=> x.Character.PlayerID == _userId))
+                       .Select(
+                           e =>
+                               new CampaignListView
+                               {
+                                   CampaignID = e.CampaignID,
+                                   CampaignName = e.CampaignName,
+                                   GameSystem = e.GameSystem,
+                                   DmGuid = e.DmGuid
+                               }).ToListAsync();
+               
                 return query;
             }
-            
         }
         //Get a specific Campaign by ID
         public async Task<CampaignDetail> GetCampaignById(int id)
@@ -68,6 +69,7 @@ namespace DungeonsAndDatabases.Services
                 var entity = await ctx.Campaigns
                     .Where(
                         x => x.CampaignID == id).FirstOrDefaultAsync();
+                        
                     
                     //ctx
                     //    .Campaigns
@@ -91,6 +93,7 @@ namespace DungeonsAndDatabases.Services
                             }
                             ).ToList()
                     };
+                  
                 return campaignDetail;
 
             }

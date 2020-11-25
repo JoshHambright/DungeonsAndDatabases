@@ -42,6 +42,7 @@ namespace DungeonsAndDatabases.Services
                 var query = await
                     ctx
                         .Memberships
+                        .Where(x => x.Campaign.DmGuid == _userId || x.Character.PlayerID == _userId)
                         .Select(
                             e =>
                                 new MembershipDetails
@@ -65,6 +66,7 @@ namespace DungeonsAndDatabases.Services
                     .Where(
                         x => x.CampaignId == campaignId && x.CharacterID == characterId)
                         .FirstOrDefaultAsync();
+                
                 var membershipDetail = new MembershipDetails
                 {
                     CampaignId = entity.CampaignId,
@@ -90,6 +92,33 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
 
+        }
+
+        public async Task<bool> CheckGetCredentials(int campaignId,int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Memberships
+                    .Where(
+                        x => x.CampaignId == campaignId && x.CharacterID == characterId)
+                        .FirstOrDefaultAsync();
+                if (entity.Campaign.DmGuid != _userId || entity.Character.PlayerID != _userId)
+                    return false;
+                return true;
+            }
+        }
+        
+        public async Task<bool> CheckDMCredentials(int campaignId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Campaigns
+                    .Where(
+                    x => x.CampaignID == campaignId).FirstOrDefaultAsync();
+                if (entity.DmGuid != _userId)
+                    return false;
+                return true;
+            }
         }
     }
 }

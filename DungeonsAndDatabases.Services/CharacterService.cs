@@ -49,7 +49,7 @@ namespace DungeonsAndDatabases.Services
                 var query =
                 ctx
                         .Characters
-                        //.Where(e => e.PlayerID == _userId).FirstOrDefaultAsync()
+                        .Where(e => e.PlayerID == _userId)
                         .Select(                    
                             e =>
                                 new CharacterListItem

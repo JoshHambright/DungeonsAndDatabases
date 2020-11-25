@@ -10,7 +10,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Dungeons and Databases";
 
             return View();
         }

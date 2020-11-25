@@ -58,7 +58,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignService();
-           
+            var credentials = await service.CheckDMCredentials(id);
+            if (credentials == false)
+                return Unauthorized();
             var result = await service.UpdateCampaign(id,campaign);
             if (result == false)
                 return InternalServerError();
@@ -70,6 +72,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> DeleteCampaign(int id)
         {
             var service = CreateCampaignService();
+            var credentials = await service.CheckDMCredentials(id);
+            if (credentials == false)
+                return Unauthorized();
             var campaign = await service.DeleteCampaign(id);
             if (campaign == false)
                 return InternalServerError();

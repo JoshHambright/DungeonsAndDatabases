@@ -27,7 +27,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateMembershipService();
-
+            var credentials = await service.CheckDMCredentials(membership.CampaignID);
+            if (credentials == false)
+                return Unauthorized();
             var result = await service.CreateMembership(membership);
 
             if (result == false)
@@ -39,6 +41,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> GetMemberships()
         {
             MembershipService membershipService = CreateMembershipService();
+
             var memberships = await membershipService.GetMemberships();
             return Ok(memberships);
         }
@@ -47,7 +50,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> GetMembership(int campaignId, int characterId)
         {
             MembershipService membershipService = CreateMembershipService();
+            var credentials = await membershipService.CheckGetCredentials(campaignId, characterId);
+            if (credentials == false)
+                return Unauthorized();
             var membership = await membershipService.GetMembershipById(campaignId, characterId);
+            
             if (membership == null)
                 return NotFound();
             return Ok(membership);
@@ -56,6 +63,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public async Task<IHttpActionResult> DeleteMembership(int campaignId, int characterId)
         {
             MembershipService membershipService = CreateMembershipService();
+            var credentials = await membershipService.CheckDMCredentials(campaignId);
+            if (credentials == false)
+                return Unauthorized();
             var membership = await membershipService.DeleteMembership(campaignId, characterId);
             if (membership == false)
                 return NotFound();

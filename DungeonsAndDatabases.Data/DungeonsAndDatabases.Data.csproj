@@ -90,6 +90,7 @@
     <Compile Include="Campaign.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Loot.cs" />
     <Compile Include="Membership.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />

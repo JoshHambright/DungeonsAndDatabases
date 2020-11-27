@@ -24,7 +24,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         //CREATE
         //Create New Character
         [HttpPost]
-        public async Task<IHttpActionResult> Character(CharacterCreate cha)
+        public async Task<IHttpActionResult> CreateCharacter(CharacterCreate cha)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

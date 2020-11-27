@@ -1,5 +1,6 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.Loot;
 using DungeonsAndDatabases.Models.MembershipModels;
 using DungeonsAndDatabases.Models.PlayerModels;
 using System;
@@ -90,6 +91,17 @@ namespace DungeonsAndDatabases.Services
                                 CharacterId = e.CharacterID,
                                 CharacterName = e.Character.CharacterName,
                                 PlayerName = e.Character.Player.PlayerName
+                            }
+                            ).ToList(),
+                        CampaignLoot = entity.CampaignLoot.Select(
+                            e => 
+                            new LootDetails
+                            {
+                                LootID = e.LootID,
+                                Name = e.Name,
+                                Description = e.Description,
+                                ValueInGP = e.ValueInGP,
+                                CampaignID = e.CampaignID
                             }
                             ).ToList()
                     };

@@ -39,7 +39,7 @@ namespace DungeonsAndDatabases.Data
         public DbSet<Player> Players { get; set; } //<--- Players DBSet
         public DbSet<Campaign> Campaigns { get; set; } //<--- Campaigns DBSet
         public DbSet<Membership> Memberships { get; set; } //<--- Membership DBSet
-
+        public DbSet<Loot> CampaignLoot { get; set; } //Loot items for campaigns DBSet
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

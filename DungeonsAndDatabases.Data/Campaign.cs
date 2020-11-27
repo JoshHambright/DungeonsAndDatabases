@@ -19,6 +19,6 @@ namespace DungeonsAndDatabases.Data
         public Guid DmGuid { get; set; }
         public virtual Player DungeonMaster { get; set; }
         public virtual List<Membership> Memberships { get; set; } = new List<Membership>(); //List of characters who are members of this campaign
-        public virtual List<Loot> CampaignLoot { get; set; } = new List<Loot>(); //Campaign specific loot items
+        //public virtual List<Loot> CampaignLoot { get; set; } = new List<Loot>(); //Campaign specific loot items
     }
 }

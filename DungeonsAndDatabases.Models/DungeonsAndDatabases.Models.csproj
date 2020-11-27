@@ -58,6 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
+    <Compile Include="Loot\LootCreate.cs" />
+    <Compile Include="Loot\LootDetails.cs" />
+    <Compile Include="Loot\LootDetailsWithCampaign.cs" />
+    <Compile Include="Loot\LootListItem.cs" />
+    <Compile Include="Loot\LootUpdate.cs" />
     <Compile Include="MembershipModels\MembershipWithPlayerName.cs" />
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetails.cs" />

@@ -12,7 +12,7 @@ namespace DungeonsAndDatabases.Models.Loot
         [Required]
         public string Name { get; set; }
         [Required]
-        public int  ValueInGP { get; set; }
+        public double  ValueInGP { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]

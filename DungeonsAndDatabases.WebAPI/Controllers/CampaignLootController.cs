@@ -46,43 +46,43 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetLootItem(int lootId)
+        public async Task<IHttpActionResult> GetLootItem(int id)
         {
             CampaignLootService campaignLootService = CreateCampaignLootService();
-            var credentials = await campaignLootService.CheckDMCredentials(lootId);
+            var credentials = await campaignLootService.CheckDMCredentials(id);
             if (credentials == false)
                 return Unauthorized();
-            var loot = await campaignLootService.GetCampaignLootByID(lootId);
+            var loot = await campaignLootService.GetCampaignLootByID(id);
             if (loot == null)
                 return NotFound();
             return Ok(loot);
         }
         //Update Campaign Loot
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateCampaignLootItem([FromUri]int lootId,[FromBody]LootUpdate model)
+        public async Task<IHttpActionResult> UpdateCampaignLootItem([FromUri]int id,[FromBody]LootUpdate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignLootService();
-            var credentials = await service.CheckDMCredentials(lootId);
+            var credentials = await service.CheckDMCredentials(id);
             if (credentials == false)
                 return Unauthorized();
-            var result = await service.UpdateCampaignLoot(lootId, model);
+            var result = await service.UpdateCampaignLoot(id, model);
             if (result == false)
                 return InternalServerError();
             return Ok();
         }
         //Delete Campaign Loot
         [HttpDelete]
-        public async Task<IHttpActionResult> DeleteCampaignLoot(int lootId)
+        public async Task<IHttpActionResult> DeleteCampaignLoot(int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignLootService();
-            var credentials = await service.CheckDMCredentials(lootId);
+            var credentials = await service.CheckDMCredentials(id);
             if (credentials == false)
                 return Unauthorized();
-            var result = await service.DeleteCampaignLoot(lootId);
+            var result = await service.DeleteCampaignLoot(id);
             if (result == false)
                 return InternalServerError();
             return Ok();

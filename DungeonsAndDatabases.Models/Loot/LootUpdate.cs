@@ -9,7 +9,7 @@ namespace DungeonsAndDatabases.Models.Loot
     public class LootUpdate
     {
         public string Name { get; set; }
-        public int ValueInGP { get; set; }
+        public double ValueInGP { get; set; }
         public string Description { get; set; }
     }
 }

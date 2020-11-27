@@ -1,4 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.Loot;
 using DungeonsAndDatabases.Models.MembershipModels;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,6 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         public string DmName { get; set; }
         //public virtual Player  DungeonMaster { get; set; }
         public virtual List<MembershipWithPlayerName> Memberships { get; set; } = new List<MembershipWithPlayerName>();
+        public virtual List<LootDetails> CampaignLoot { get; set; } = new List<LootDetails>();
     }
 }

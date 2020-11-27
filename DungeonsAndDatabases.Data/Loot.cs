@@ -13,7 +13,7 @@ namespace DungeonsAndDatabases.Data
         [Key]
         public int LootID { get; set; }
         public string Name { get; set; }
-        public int ValueInGP { get; set; }
+        public double ValueInGP { get; set; }
         public string Description { get; set; }
         [ForeignKey(nameof(Campaign))]
         public int CampaignID { get; set; }

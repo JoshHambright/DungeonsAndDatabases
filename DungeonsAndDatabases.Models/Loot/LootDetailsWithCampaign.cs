@@ -11,7 +11,7 @@ namespace DungeonsAndDatabases.Models.Loot
         public int LootID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int ValueInGP { get; set; }
+        public double ValueInGP { get; set; }
         public int CampaignID { get; set; }
         public string CampaignName { get; set; }
         public string DMName { get; set; }

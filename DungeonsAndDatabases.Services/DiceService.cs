@@ -17,7 +17,7 @@ namespace DungeonsAndDatabases.Services
         public DiceSingle GetDiceRoll(int dicesides)
         {
             var roll = new DiceSingle();
-            roll.DieType = $"D{dicesides}"
+            roll.DieType = $"D{dicesides}";
             int diceRoll = 0;
             while (diceRoll < 1)
             {

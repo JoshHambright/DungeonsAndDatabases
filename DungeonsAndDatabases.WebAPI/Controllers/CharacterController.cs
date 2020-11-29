@@ -36,11 +36,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
+        //READ
         /// <summary>
         /// Get all Characters
         /// </summary>
         /// <returns>List of Characters</returns>
-        //READ
         //Get All Characters
         [HttpGet]
         public async Task<IHttpActionResult> GetCharacter()

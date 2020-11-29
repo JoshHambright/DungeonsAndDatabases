@@ -16,7 +16,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var diceService = new DiceService();
             return diceService;
         }
-
+        //Roll Multiple dice
         [HttpGet]
         public IHttpActionResult RollMultipleDice([FromUri]int D, [FromUri]int N)
         {
@@ -25,6 +25,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 
             return Ok(results);
         }
+        //Roll a single Die
         [HttpGet]
         public IHttpActionResult RollADie([FromUri] int D)
         {

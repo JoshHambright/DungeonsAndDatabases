@@ -1,4 +1,5 @@
-﻿using DungeonsAndDatabases.Services;
+﻿using DungeonsAndDatabases.Models.DiceModels;
+using DungeonsAndDatabases.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,20 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult RollDice(int D)
+        public IHttpActionResult RollMultipleDice([FromUri]int D, [FromUri]int N)
         {
             DiceService dice = CreateDiceService();
-            var diceRoll = dice.GetDiceRoll(D);
+            var results = dice.GetMultipleDiceRoll(D,N);
 
-            return Ok(diceRoll);
+            return Ok(results);
+        }
+        [HttpGet]
+        public IHttpActionResult RollADie([FromUri] int D)
+        {
+            DiceService dice = CreateDiceService();
+            var results = dice.GetDiceRoll(D);
+
+            return Ok(results);
         }
     }
 }

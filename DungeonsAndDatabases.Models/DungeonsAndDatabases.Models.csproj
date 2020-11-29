@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
+    <Compile Include="DiceModels\DiceResults.cs" />
+    <Compile Include="DiceModels\DiceSingle.cs" />
     <Compile Include="Loot\LootCreate.cs" />
     <Compile Include="Loot\LootDetails.cs" />
     <Compile Include="Loot\LootDetailsWithCampaign.cs" />

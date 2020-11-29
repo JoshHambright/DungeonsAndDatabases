@@ -67,4 +67,5 @@ namespace DungeonsAndDatabases.Data
             HasKey(iur => iur.UserId);
         }
     }
+    //
 }

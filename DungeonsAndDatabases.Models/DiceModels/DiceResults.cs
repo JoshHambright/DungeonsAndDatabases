@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DiceModels
 {
+    //Model for returning multiple dice rolls
     public class DiceResults
     {
         public List<DiceSingle> Rolls { get; set; } = new List<DiceSingle>();

@@ -21,6 +21,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return membershipService;
 
         }
+        /// <summary>
+        /// Create a Membership
+        /// </summary>
+        /// <param name="membership"></param>
+        /// <returns>Creates a membership for a character in a campaign</returns>
         [HttpPost]
         public async Task<IHttpActionResult> Post(MembershipCreate membership)
         {
@@ -36,7 +41,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
+        /// <summary>
+        /// Get Memberships
+        /// </summary>
+        /// <returns>Displays all memberships a player is a part of</returns>
         [HttpGet]
         public async Task<IHttpActionResult> GetMemberships()
         {
@@ -45,7 +53,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var memberships = await membershipService.GetMemberships();
             return Ok(memberships);
         }
-
+        /// <summary>
+        /// Get Membership by Keys 
+        /// </summary>
+        /// <param name="campaignId"></param>
+        /// <param name="characterId"></param>
+        /// <returns>Displays a specific entry in the membership table</returns>
         [HttpGet]
         public async Task<IHttpActionResult> GetMembership(int campaignId, int characterId)
         {
@@ -59,6 +72,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return NotFound();
             return Ok(membership);
         }
+        /// <summary>
+        /// Delete a membership
+        /// </summary>
+        /// <param name="campaignId"></param>
+        /// <param name="characterId"></param>
+        /// <returns>Removes a specific membership</returns>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteMembership(int campaignId, int characterId)
         {

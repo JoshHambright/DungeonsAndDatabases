@@ -20,7 +20,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var CampaignLootService = new CampaignLootService(userId);
             return CampaignLootService;
         }
-
+        /// <summary>
+        /// Add Campaign Loot to Campaign.
+        /// </summary>
         [HttpPost]
         public async Task<IHttpActionResult> Post(LootCreate model)
         {
@@ -36,7 +38,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
+        /// <summary>
+        /// Get all Loot collected by Players.
+        /// </summary>
         [HttpGet]
         public async Task<IHttpActionResult> GetCampaignLoot()
         {
@@ -44,7 +48,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var campaignLoot = await campaignLootService.GetAllCampaignLoot();
             return Ok(campaignLoot);
         }
-
+        /// <summary>
+        /// Find a Loot item by ID.
+        /// </summary>
+        /// <param name="id">The ID of your Campaign.</param>
         [HttpGet]
         public async Task<IHttpActionResult> GetLootItem(int id)
         {
@@ -57,7 +64,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return NotFound();
             return Ok(loot);
         }
-        //Update Campaign Loot
+        /// <summary>
+        /// Update Loot item in Campaign.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateCampaignLootItem([FromUri]int id,[FromBody]LootUpdate model)
         {
@@ -72,7 +81,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-        //Delete Campaign Loot
+        /// <summary>
+        /// Delete a Loot Item.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteCampaignLoot(int id)
         {
@@ -87,7 +98,5 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
-
     }
 }

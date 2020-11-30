@@ -18,7 +18,6 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
         [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]
         public string GameSystem { get; set; }
-        [Required]
         public Guid DmGuid { get; set; }
 
     }

@@ -19,19 +19,22 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var campaignService = new CampaignService(userId);
             return campaignService;
         }
+        /// <summary>
+        /// Create a new Campaign.
+        /// </summary>
         public async Task<IHttpActionResult> Post(CampaignCreate campaign)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateCampaignService();
-
             var result =  await service.CreateCampaign(campaign);
             if (result == false)
                 return InternalServerError();
             return Ok();
-
         }
-        //Get all campaigns
+        /// <summary>
+        /// Gets all campaigns in the databases.
+        /// </summary>
         [HttpGet]
         public async Task <IHttpActionResult> GetAllCampaigns()
         {
@@ -39,10 +42,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var campaigns = await campaignService.GetCampaigns();
             return Ok(campaigns);
         }
-        
-        //Get Campaign by ID
+        /// <summary>
+        /// Find a Campaign by ID.
+        /// </summary>
+        /// <param name="id">The ID of your Campaign.</param>
         [HttpGet]
-        public async Task <IHttpActionResult> GetCampaignByID(int id)
+        public async Task<IHttpActionResult> GetCampaignByID(int id)
         {
             CampaignService campaignService = CreateCampaignService();
             var campaign = await campaignService.GetCampaignById(id);
@@ -50,8 +55,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return NotFound();
             return Ok(campaign);
         }
-
-        //Update a Campaign
+        /// <summary>
+        /// Update a campaign in the database.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateCampaign([FromUri] int id, [FromBody] CampaignUpdate campaign)
         {
@@ -66,8 +72,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
-        //Delete a Campaign
+        /// <summary>
+        /// Delete a campaign in the database.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteCampaign(int id)
         {

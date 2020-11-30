@@ -20,7 +20,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var playerService = new PlayerService(userId);
             return playerService;
         }
-        // Create 
+        /// <summary>
+        /// Create a new Player.
+        /// </summary>
         public async Task<IHttpActionResult> CreatePlayer(PlayerCreate player)
         {
             if (!ModelState.IsValid)
@@ -30,7 +32,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-        //Read
+        /// <summary>
+        /// Get all Players in the database.
+        /// </summary>
         [HttpGet]
         public async Task<IHttpActionResult> GetPlayers()
         {
@@ -38,6 +42,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var players = await playerService.GetPlayers();
             return Ok(players);
         }
+        /// <summary>
+        /// Find a Player by ID.
+        /// </summary>
+        /// <param name="id">The ID of your Campaign.</param>
         [HttpGet]
         public async Task<IHttpActionResult> GetPlayerByID(Guid id)
         {
@@ -47,10 +55,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return NotFound();
             return Ok(player);
         }
-
-
-
-        //Updated
+        /// <summary>
+        /// Update a Player.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdatePlayer([FromUri] Guid id, [FromBody] PlayerEdit player)
         {
@@ -62,6 +69,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
+        /// <summary>
+        /// Delete a player from the database.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeletePlayer(Guid id)
         {

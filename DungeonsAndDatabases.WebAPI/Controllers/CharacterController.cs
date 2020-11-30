@@ -48,7 +48,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         /// <returns>Returns a list of Characters belonging to player</returns>
         //Get All Characters
         [HttpGet]
-        public async Task<IHttpActionResult> GetCharacter()
+        public async Task<IHttpActionResult> GetCharacters()
         {
             CharacterService characterService = CreateCharacterService();
             var character = await characterService.GetCharacter();

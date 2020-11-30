@@ -16,7 +16,7 @@ Samuel Ayorinde
 We set out to create a restful .NET WebAPI project to provide dungeonmasters and players tools to manage and track their campaigns.
 Below you will find documentation for the API and how to clone, install and use the API.
 
-### Feature:
+### Features:
 ------
 * Create, View, Edit and Delete your own player profile
 * Create, View, Edit and Delete multiple characters per player
@@ -71,8 +71,52 @@ Simply open the solution file in Visual Studio and run the WebAPI project.
 This project also includes the **swashbuckler/swagger** package which allows for testing of endpoints from the API, simply goto the
 API address when it loads and add `\swagger` to the URL
 
-!!!DOCUMENT ALL ENDPOINTS HERE!!!
+* **Player**
+Allows you to store your individual player information. You are only allowed one player per login.
+  * `POST api/Player` Creates a new player, limit one per user account. Requires a `PlayerName` string for the players name
+  * `GET api/Player` Get all Players in the database
+  * `GET api/Player{id}` Get details on a specific player based on their Player ID GUID.
+  * `PUT api/Player{id}` Update a player name (body) based on player ID Guid in URI. Can only update your own account.
+  * `Delete api/Player{id}` Deletes a player Account based on Player ID GUID. Can only delete your own account.
+ 
+* **Character**
+Stores basic information about a character, who owns the character and which campaigns they are a part of.
+  * _You must create a player before you can create a character._
+  * `POST api/Character` Creates a Character. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`
+  * `GET api/Character` Shows all of the characters associated with your Player ID
+  * `GET api/Character/{id}` Shows the details on a specified `Character ID`
+  * `PUT api/Character/{id}` Updates a Character based on a specified `Character ID`. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`. You can only edit characters you created.
+  * `DELETE api/Character/{id}` Deletes a character based on a specified `Character ID`. Can only delete characters you created.
 
+* **Campaign**
+Stores information about a specific campaign, who the DM is, who the players are, what game system the campaign is using, and any special loot the DM has added for the party.
+  * _You must create a player before creating a campaign_
+  * `POST api/Campaign` Create a new Campaign. Body of the request must contain a `Campaign Name` and `Game System`(Ex. DND5E, DND3.5, Pathfinder)
+  * `GET api/Campaign` Get all campaigns you have created or are a member of
+  * `GET api/Campaign/{id}` Get details on a specified `Campaign ID`
+  * `PUT api/Campaign/{id}` Get details for a campaign based on a specified `Campaign ID`, body should contain `Campaign Name` and `Game System`. You can only edit campaigns you created.
+  * `DELETE api/Campaign/{id}` Delete a campaign based on `Campaign ID`. You can only delete campaigns you've created.
+ 
+* **Membership**
+  * _You must have a campaign and atleast one character in the database to create a membership_
+  * `POST api/Membership` Create a membership in a specified Campaign. Body must contain `Campaign ID` and `Character ID`. You can only add memberships to Campaigns you created.
+  * `GET api/Membership` Returns all Memberships in the database
+  * `GET api/Membership?campaignId={campaignId}&characterId={characterId}` Returns details on a specific Membership based on `Campaign ID` and `Character ID`. Can only be viewed if you created the specified Campaign
+  * `Delete api/Membership?campaignId={campaignId}&characterId={characterId}` Deletes a character from a campaign based on `Campaign ID` and `Character ID`. Can only be performed if you created the campaign
+ 
+ * **Campaign Loot**
+ Campaign loot can be used to record campaign specific loot the party has acquired, examples are a rusty key to an unidentified door, or a homebrew specific treasure.
+   * _You must have a campaign in the database you created to add campaign loot_
+   * `POST api/CampaignLoot` Creates a new loot item for that campaign.  Body must contain a `Name`, `ValueInGP` (value of item in Gold Pieces), `Description` and the `CampaignID`.  You can only add loot if you are the Dungeon Master for a campaign
+   * `GET api/CampaignLoot` Returns all loot associated with campaigns you are the DM
+   * `GET api/CampaignLoot/{id}` Returns details on a specific loot item you have created
+   * `PUT api/CampaignLoot/{id}` Updates a loot item, you are required to be the DM of the campaign to edit it.  Body must contain `Name`, `ValueInGP` (value of item in Gold Pieces), and `Description`
+   * `DELETE api/CampaignLoot/{id}` Deletes a loot item from a campaign you are the DM of.
+   
+ * **Dice**
+ Dice Roller for RPG games
+   * `GET api/Dice?D={D}` Roll a single Die, replace the `{D}` with the number of sides you'd like the die to have
+   * `GET api/Dice?D={D}&N={N}` Rolls `{N}` number of `{D}` sided dice.  Return the individual rolls, the total, the highest and the lowest roll.
 
 ------
 ### List of Resources Used to complete this project

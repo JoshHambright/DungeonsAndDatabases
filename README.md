@@ -1,6 +1,6 @@
 # DungeonsAndDatabases
 
-A restful API for managing campaigns for D&D and other RPGs and games.
+A restful API for managing campaigns for D&D and other RPGs.
 
 ------
 

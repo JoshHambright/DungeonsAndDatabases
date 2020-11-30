@@ -16,8 +16,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
     {
         //This endpoint is for debugging and testing only, it should be
         //Disabled if deploying this API in a public facing manner
-
-        // Returns the GUID,UserName and PlayerName associated with the Token passed in the header
+ 
+        /// <summary>
+        /// Get User Info
+        /// </summary>
+        /// <returns>Returns the GUID,UserName and PlayerName associated with the Token passed in the header</returns>
         public async Task<IHttpActionResult> GetUserInfoAsync()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

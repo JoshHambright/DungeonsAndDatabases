@@ -17,6 +17,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return diceService;
         }
         //Roll Multiple dice
+        /// <summary>
+        /// Roll Multiple Dice
+        /// </summary>
+        /// <param name="D"></param>
+        /// <param name="N"></param>
+        /// <returns>Roll multiple dice and return the results</returns>
         [HttpGet]
         public IHttpActionResult RollMultipleDice([FromUri]int D, [FromUri]int N)
         {
@@ -26,6 +32,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return Ok(results);
         }
         //Roll a single Die
+        /// <summary>
+        /// Roll a die
+        /// </summary>
+        /// <param name="D"></param>
+        /// <returns>Rolls a die and returns the result</returns>
         [HttpGet]
         public IHttpActionResult RollADie([FromUri] int D)
         {

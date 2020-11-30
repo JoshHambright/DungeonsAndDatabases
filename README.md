@@ -1,8 +1,11 @@
 # DungeonsAndDatabases
-A restful API for managing campaigns for D&D and other RPGs and games.
-Produced for Eleven Fifty Academy Software Development Blue Badge Final Project by Team Sleepy
 
-### Team Sleepy
+A restful API for managing campaigns for D&D and other RPGs and games.
+
+------
+
+Produced for Eleven Fifty Academy Software Development Blue Badge Final Project by Team Sleepy
+##### Team Sleepy is:
 
 Joseph Jurney
 
@@ -12,6 +15,19 @@ Samuel Ayorinde
 
 We set out to create a restful .NET WebAPI project to provide dungeonmasters and players tools to manage and track their campaigns.
 Below you will find documentation for the API and how to clone, install and use the API.
+
+### Feature:
+------
+* Create, View, Edit and Delete your own player profile
+* Create, View, Edit and Delete multiple characters per player
+* Create, View, Edit and Delete Campaigns as the Dungeon Master
+* Track campaign membership and allow only your players and yourself to view your campaigns
+* Keep track of home brew items and loot found by the party
+* Roll virtual dice
+
+### Built using:
+* Visual Studio Community 2019
+* C# 8.0
 
 #### Planning Documents:
 Blue Badge Project Planning Template:
@@ -39,6 +55,8 @@ You can clone it locally using SSH or HTTPS
 HTTPS: https://github.com/JoshHambright/DungeonsAndDatabases.git
 
 SSH: git@github.com:JoshHambright/DungeonsAndDatabases.git
+
+To get started register your account and then create a player.  Once you have a player you can begin by setting up your campaign or creating characters.
 
 
 ### Installing the project

@@ -6,12 +6,9 @@ A restful API for managing campaigns for D&D and other RPGs and games.
 
 Produced for Eleven Fifty Academy Software Development Blue Badge Final Project by Team Sleepy
 ##### Team Sleepy is:
-
-Joseph Jurney
-
-Josh Hambright
-
-Samuel Ayorinde
+* Joseph Jurney
+* Josh Hambright
+* Samuel Ayorinde
 
 We set out to create a restful .NET WebAPI project to provide dungeonmasters and players tools to manage and track their campaigns.
 Below you will find documentation for the API and how to clone, install and use the API.

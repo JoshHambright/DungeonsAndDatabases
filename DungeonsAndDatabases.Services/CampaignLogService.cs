@@ -69,7 +69,16 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx
                     .CampaignLogs
-                    .FirstOrDefaultAsync(e => e.LogID == id);
+                    .Where(e => e.LogID == id).FirstOrDefaultAsync();
+                string name = "";
+                if (entity.Campaign.DmGuid == _userId)
+                    name = "Dungeon Master";
+                else
+                    name = entity.Campaign.Memberships
+                                            .Where(e => e.Character.PlayerID == _userId)
+                                            .FirstOrDefault()
+                                            .Character.CharacterName;
+
                 return
                     new LogEntryDetails
                     {
@@ -77,9 +86,7 @@ namespace DungeonsAndDatabases.Services
                         Message = entity.Message,
                         CampaignID = entity.CampaignID,
                         CampaingName = entity.Campaign.CampaignName,
-                        CharacterName = entity.Campaign.Memberships
-                                            .Where(e => e.Character.PlayerID == _userId).FirstOrDefault()
-                                            .Character.CharacterName,
+                        CharacterName = name,
                         PlayerID = entity.PlayerID,
                         PlayerName = entity.Player.PlayerName,
                         DateCreated = entity.DateCreated,

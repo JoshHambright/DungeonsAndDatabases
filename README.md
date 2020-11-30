@@ -20,6 +20,7 @@ Below you will find documentation for the API and how to clone, install and use 
 * Create, View, Edit and Delete Campaigns as the Dungeon Master
 * Track campaign membership and allow only your players and yourself to view your campaigns
 * Keep track of home brew items and loot found by the party
+* Players and DM's can keep virtual notes for each campaign
 * Roll virtual dice
 
 ### Built using:
@@ -109,6 +110,15 @@ Stores information about a specific campaign, who the DM is, who the players are
    * `GET api/CampaignLoot/{id}` Returns details on a specific loot item you have created
    * `PUT api/CampaignLoot/{id}` Updates a loot item, you are required to be the DM of the campaign to edit it.  Body must contain `Name`, `ValueInGP` (value of item in Gold Pieces), and `Description`
    * `DELETE api/CampaignLoot/{id}` Deletes a loot item from a campaign you are the DM of.
+   
+ * **Campaign Notes**
+ Keep a log of notes related to your campaigns, specific to each character or DM in the campaign.
+ * _You must have a campaign and a player to create notes_
+ * `POST api/CampaignLog` Create a new Campaign Log Entry. Body requires a `Message` that contains the information you want to add to the log and a `CampaignID`. User must have a character that is a member of the Campaign or be the Dungeon Master for the campaign to create an entry.
+ * `GET api/CampaignLog` Get all Campaign logs in the database for currently logged in user
+ * `GET api/CampaignLog/{id}` Get details on a specific campaign log entry specified by the `ID`. You must be the creator of the log entry to view it.
+ * `PUT api/CampaignLog/{id}` Update a specified campaign log by `id`. You must be logged in as the creator of a log to edit it. Body requires as `message` containing the body of the log.
+ * `DELETE api/CampaignLog/{id}` Delete a specified campaign log by `id`. You must be logged in as the creator to delete the log entry.
    
  * **Dice**
  Dice Roller for RPG games

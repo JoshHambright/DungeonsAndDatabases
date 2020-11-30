@@ -28,7 +28,8 @@ namespace DungeonsAndDatabases.Services
                 CharacterName = model.CharacterName,
                 Race = model.Race,
                 Class = model.Class,
-                Level = model.Level
+                Level = model.Level,
+                PlayerID = _userId
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,19 +49,22 @@ namespace DungeonsAndDatabases.Services
                 var query =
                 ctx
                         .Characters
-                        .Select(
+                        .Where(e => e.PlayerID == _userId)
+                        .Select(                    
                             e =>
                                 new CharacterListItem
                                 {
+                                    CharacterId = e.CharacterID,
                                     CharacterName = e.CharacterName,
-                                    Level = e.Level
+                                    Level = e.Level,
+                                    PlayerID = e.PlayerID
                                 }
                         );
                 return await query.ToArrayAsync();
             }
         }
 
-        //Get Character by ID
+        //Get Character by CharacterID
         public async Task<CharacterDetail> GetCharacter(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -73,7 +77,7 @@ namespace DungeonsAndDatabases.Services
                 return
                     new CharacterDetail
                     {
-                        //PlayerID = cat.PlayerID,
+                        PlayerID = cat.PlayerID,
                         CharacterName = cat.CharacterName,
                         Race = cat.Race,
                         Class = cat.Class,
@@ -86,32 +90,49 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Characters
-                        .Single(e => e.CharacterID == id);
+                var entity = await ctx.Characters
+                        .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                //if (entity.PlayerID != _userId)
+                //    return false;
+                //ctx
+                    //    .Characters
+                    //    .Single(e => e.CharacterID == id);
                 entity.CharacterName = model.CharacterName;
                 entity.Race = model.Race;
                 entity.Class = model.Class;
                 entity.Level = model.Level;
-
-
+                
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-        //Delete a character
+        //Delete a character by Character ID
         public async Task<bool> DeleteCharacter(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Characters
-                        .Single(e => e.CharacterID == id);
+                var entity = await ctx.Characters
+                    .Where(e => e.CharacterID == id && e.PlayerID == _userId).FirstOrDefaultAsync();
+                    
+                    //ctx
+                    //    .Characters
+                    //    .Single(e => e.CharacterID == id);
                 ctx.Characters.Remove(entity);
 
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        public async Task<bool> CheckCharCredentials(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Characters
+                        .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
+                if (entity.PlayerID != _userId)
+                    return false;
+                return true;
+            }
+        }
     }
+
 }

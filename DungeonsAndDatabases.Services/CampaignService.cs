@@ -1,5 +1,8 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.Loot;
+using DungeonsAndDatabases.Models.MembershipModels;
+using DungeonsAndDatabases.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,7 +30,7 @@ namespace DungeonsAndDatabases.Services
                 {
                     CampaignName = model.CampaignName,
                     GameSystem = model.GameSystem,
-                    DmGuid = model.DmGuid
+                    DmGuid = _userId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -42,40 +45,69 @@ namespace DungeonsAndDatabases.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                 var query = await
-                    ctx
-                        .Campaigns
-                        .Select(
-                            e =>
-                                new CampaignListView
-                                {
-                                    CampaignID = e.CampaignID,
-                                    CampaignName = e.CampaignName,
-                                    GameSystem = e.GameSystem,
-                                    DmGuid = e.DmGuid
-                                }
-                        ).ToListAsync();
+                var query = await
+                   ctx
+                       .Campaigns
+                       .Where(e => e.DmGuid == _userId || e.Memberships.Any(x=> x.Character.PlayerID == _userId))
+                       .Select(
+                           e =>
+                               new CampaignListView
+                               {
+                                   CampaignID = e.CampaignID,
+                                   CampaignName = e.CampaignName,
+                                   GameSystem = e.GameSystem,
+                                   DmGuid = e.DmGuid
+                               }).ToListAsync();
+               
                 return query;
             }
-            
         }
         //Get a specific Campaign by ID
         public async Task<CampaignDetail> GetCampaignById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = await ctx.Campaigns.FindAsync(id);
+                var entity = await ctx.Campaigns
+                    .Where(
+                        x => x.CampaignID == id).FirstOrDefaultAsync();
+                        
+                    
                     //ctx
                     //    .Campaigns
                     //    .Single(e => e.CampaignID == id);
-                return
-                    new CampaignDetail
+                
+                    var campaignDetail =  new CampaignDetail
                     {
                         CampaignID = entity.CampaignID,
                         CampaignName = entity.CampaignName,
                         GameSystem = entity.GameSystem,
-                        DmGuid = entity.DmGuid
+                        DmGuid = entity.DmGuid,
+                        DmName = entity.DungeonMaster.PlayerName,
+                        Memberships = entity.Memberships.Select(
+                            e => 
+                            new MembershipWithPlayerName { 
+                                CampaignId = e.CampaignId,
+                                CampaignName = e.Campaign.CampaignName,
+                                CharacterId = e.CharacterID,
+                                CharacterName = e.Character.CharacterName,
+                                PlayerName = e.Character.Player.PlayerName
+                            }
+                            ).ToList(),
+                        CampaignLoot = entity.CampaignLoot.Select(
+                            e => 
+                            new LootDetails
+                            {
+                                LootID = e.LootID,
+                                Name = e.Name,
+                                Description = e.Description,
+                                ValueInGP = e.ValueInGP,
+                                CampaignID = e.CampaignID
+                            }
+                            ).ToList()
                     };
+                  
+                return campaignDetail;
+
             }
         }
         //Update a campaign 
@@ -88,7 +120,7 @@ namespace DungeonsAndDatabases.Services
                         e => e.CampaignID == id).FirstOrDefaultAsync();
                 entity.CampaignName = model.CampaignName;
                 entity.GameSystem = model.GameSystem;
-                entity.DmGuid = model.DmGuid;
+                //entity.DmGuid = model.DmGuid;
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
@@ -102,6 +134,18 @@ namespace DungeonsAndDatabases.Services
                         e => e.CampaignID == id).FirstOrDefaultAsync();
                 ctx.Campaigns.Remove(entity);
                 return await ctx.SaveChangesAsync() == 1;
+            }
+        }
+
+        public async Task<bool> CheckDMCredentials(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx.Campaigns
+                    .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
+                if (entity.DmGuid != _userId)
+                    return false;
+                return true;
             }
         }
     }

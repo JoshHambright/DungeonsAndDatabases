@@ -10,13 +10,14 @@ namespace DungeonsAndDatabases.Data
     public class Player
     {
         [Key]
-        public Guid PlayerID { get; set; } = Guid.NewGuid();
+        //public Guid PlayerID { get; set; } = Guid.NewGuid();
+        public Guid PlayerID { get; set; }
         [Required]
         public string PlayerName { get; set; }
 
 
-        //public virtual List<Character> Characters { get; set; } = new List<Character>();
-        //public virtual List<Campaign> Campaigns { get; set; } = new List<Campaign>();
-        //public virtual List<Membership> CharacterCampaign { get; set; } = new List<Membership>();
+        public virtual List<Character> Characters { get; set; } = new List<Character>();
+        public virtual List<Campaign> Campaigns { get; set; } = new List<Campaign>();
+        //public virtual List<MembershipDetials> CharacterCampaign { get; set; } = new List<Membership>();
     }
 }

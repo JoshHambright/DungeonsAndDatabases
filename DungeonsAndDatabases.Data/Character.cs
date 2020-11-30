@@ -23,11 +23,11 @@ namespace DungeonsAndDatabases.Data
 
         //public List<string> Inventory = new List<string>();
 
-        
-        //[ForeignKey(nameof(Player))] //Foreign key that will be used to assign character to its player
-        //public Guid PlayerID { get; set; }
-        
-        //public virtual Player Player { get; set; }
-        
+        public virtual Player Player { get; set; }
+
+        [ForeignKey(nameof(Player))] //Foreign key that will be used to assign character to its player
+        public Guid PlayerID { get; set; }
+
+
     }
 }

@@ -1,4 +1,7 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.CharacterModels;
+using DungeonsAndDatabases.Models.MembershipModels;
 using DungeonsAndDatabases.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
@@ -23,7 +26,8 @@ namespace DungeonsAndDatabases.Services
         {
             var entity = new Player()
             {
-                PlayerName = model.PlayerName
+                PlayerName = model.PlayerName,
+                PlayerID = _playerId
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -43,6 +47,7 @@ namespace DungeonsAndDatabases.Services
                             e =>
                                 new PlayerListItem
                                 {
+                                    PlayerID = e.PlayerID,
                                     PlayerName = e.PlayerName
                                 }
                         ).ToListAsync();
@@ -61,7 +66,41 @@ namespace DungeonsAndDatabases.Services
                     new PlayerDetails
                     {
                         PlayerName = entity.PlayerName,
-                        PlayerID = entity.PlayerID
+                        PlayerID = entity.PlayerID,
+
+                        Characters = entity.Characters.Select(
+                            e =>
+                            new CharacterListItem
+                            {
+                                CharacterId = e.CharacterID,
+                                CharacterName = e.CharacterName,
+                                Level = e.Level,
+                                PlayerID = e.PlayerID
+
+
+                            }
+                            ).ToList(),
+                        CharacterCampaigns = entity.Campaigns.Select(
+
+                            e =>
+                            new CampaignListViewWithCharacter
+                            {
+                                CampaignID = e.CampaignID,
+                                CampaignName = e.CampaignName,
+                                GameSystem = e.GameSystem,
+                                DmName = e.DungeonMaster.PlayerName,
+                                Characters = e.Memberships.Select(
+                                    x => new CharacterDetail
+                                    {
+                                        PlayerID = x.Character.Player.PlayerID,
+                                        CharacterName = x.Character.CharacterName,
+                                        Race = x.Character.Race,
+                                        Class = x.Character.Class,
+                                        Level = x.Character.Level
+                                    }
+                                    ).ToList()
+                            })
+                            .ToList()
                     };
             }
         }
@@ -89,6 +128,20 @@ namespace DungeonsAndDatabases.Services
                 ctx.Players.Remove(entity);
 
                 return await ctx.SaveChangesAsync() == 1;
+            }
+        }
+
+        //Check for duplicate player
+        public async Task<bool> CheckForDuplicatePlayer()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx
+                    .Players
+                    .FirstOrDefaultAsync(e => e.PlayerID == _playerId);
+                if (entity != null)
+                    return true;
+                return false;
             }
         }
     }

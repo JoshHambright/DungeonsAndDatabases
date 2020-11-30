@@ -20,5 +20,6 @@ namespace DungeonsAndDatabases.Data
         public virtual Player DungeonMaster { get; set; }
         public virtual List<Membership> Memberships { get; set; } = new List<Membership>(); //List of characters who are members of this campaign
         public virtual List<Loot> CampaignLoot { get; set; } = new List<Loot>(); //Campaign specific loot items
+        public virtual List<LogEntry> CampaignLog { get; set; } = new List<LogEntry>(); // Campaign Log
     }
 }

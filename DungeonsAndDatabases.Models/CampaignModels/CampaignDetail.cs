@@ -1,4 +1,5 @@
 ﻿using DungeonsAndDatabases.Data;
+using DungeonsAndDatabases.Models.LogModels;
 using DungeonsAndDatabases.Models.Loot;
 using DungeonsAndDatabases.Models.MembershipModels;
 using System;
@@ -28,5 +29,6 @@ namespace DungeonsAndDatabases.Models.CampaignModels
         public virtual List<MembershipWithPlayerName> Memberships { get; set; } = new List<MembershipWithPlayerName>();
         [Display(Name = "Campaign Loot")]
         public virtual List<LootDetails> CampaignLoot { get; set; } = new List<LootDetails>();
+        public virtual List<LogEntryListItem> CampaignLog { get; set; } = new List<LogEntryListItem>();
     }
 }

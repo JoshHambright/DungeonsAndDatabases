@@ -596,6 +596,42 @@
             Delete a campaign in the database.
             </summary>
         </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLogController.CreateCampaignLogEntry(DungeonsAndDatabases.Models.LogModels.LogEntryCreate)">
+            <summary>
+            Create a new Campaign Log Entry
+            </summary>
+            <param name="logEntry"></param>
+            <returns>Creates a campaign log entry assigned to the current player.  Verifies you are a member or DM of the campaign</returns>
+            <returns></returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLogController.GetCampaignLogs">
+            <summary>
+            Get all Campaign Logs for currently logged in player
+            </summary>
+            <returns>Returns a list of campaign logs user created</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLogController.GetCharacter(System.Int32)">
+            <summary>
+            Get details on a specific campaign log
+            </summary>
+            <param name="id"></param>
+            <returns>All the campaign log details for a specified campaign log</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLogController.UpdateCampaignLog(System.Int32,DungeonsAndDatabases.Models.LogModels.LogEntryUpdate)">
+            <summary>
+            Update Specific campaign log
+            </summary>
+            <param name="id"></param>
+            <param name="logEntry"></param>
+            <returns>Updates a campaign log entry</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLogController.DeleteCampaignLogEntry(System.Int32)">
+            <summary>
+            Delete a specific campaign log entry
+            </summary>
+            <param name="id"></param>
+            <returns>Deletes a specified campaign log</returns>
+        </member>
         <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.Post(DungeonsAndDatabases.Models.Loot.LootCreate)">
             <summary>
             Add Campaign Loot to Campaign.
@@ -629,7 +665,7 @@
             <param name="cha"></param>
             <returns>Creates a character and assigns it to the current player</returns>
         </member>
-        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CharacterController.GetCharacter">
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CharacterController.GetCharacters">
             <summary>
             Get all Characters
             </summary>

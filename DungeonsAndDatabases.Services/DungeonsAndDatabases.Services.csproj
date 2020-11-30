@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CampaignLogService.cs" />
     <Compile Include="CampaignLootService.cs" />
     <Compile Include="DiceService.cs" />
     <Compile Include="PlayerService.cs" />

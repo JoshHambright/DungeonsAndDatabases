@@ -492,6 +492,58 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.Post(DungeonsAndDatabases.Models.CampaignModels.CampaignCreate)">
+            <summary>
+            Create a new Campaign.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.GetAllCampaigns">
+            <summary>
+            Gets all campaigns in the databases.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.GetCampaignByID(System.Int32)">
+            <summary>
+            Find a Campaign by ID.
+            </summary>
+            <param name="id">The ID of your Campaign.</param>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.UpdateCampaign(System.Int32,DungeonsAndDatabases.Models.CampaignModels.CampaignUpdate)">
+            <summary>
+            Update a campaign in the database.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.DeleteCampaign(System.Int32)">
+            <summary>
+            Delete a campaign in the database.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.Post(DungeonsAndDatabases.Models.Loot.LootCreate)">
+            <summary>
+            Add Campaign Loot to Campaign.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.GetCampaignLoot">
+            <summary>
+            Get all Loot collected by Players.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.GetLootItem(System.Int32)">
+            <summary>
+            Find a Loot item by ID.
+            </summary>
+            <param name="id">The ID of your Campaign.</param>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.UpdateCampaignLootItem(System.Int32,DungeonsAndDatabases.Models.Loot.LootUpdate)">
+            <summary>
+            Update Loot item in Campaign.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignLootController.DeleteCampaignLoot(System.Int32)">
+            <summary>
+            Delete a Loot Item.
+            </summary>
+        </member>
         <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CharacterController.CreateCharacter(DungeonsAndDatabases.Models.CharacterModels.CharacterCreate)">
             <summary>
             Create a Character
@@ -570,6 +622,32 @@
             <param name="campaignId"></param>
             <param name="characterId"></param>
             <returns>Removes a specific membership</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.PlayerController.CreatePlayer(DungeonsAndDatabases.Models.PlayerModels.PlayerCreate)">
+            <summary>
+            Create a new Player.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.PlayerController.GetPlayers">
+            <summary>
+            Get all Players in the database.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.PlayerController.GetPlayerByID(System.Guid)">
+            <summary>
+            Find a Player by ID.
+            </summary>
+            <param name="id">The ID of your Campaign.</param>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.PlayerController.UpdatePlayer(System.Guid,DungeonsAndDatabases.Models.PlayerModels.PlayerEdit)">
+            <summary>
+            Update a Player.
+            </summary>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.PlayerController.DeletePlayer(System.Guid)">
+            <summary>
+            Delete a player from the database.
+            </summary>
         </member>
         <member name="M:DungeonsAndDatabases.WebAPI.Controllers.ReturnUserInfoController.GetUserInfoAsync">
             <summary>

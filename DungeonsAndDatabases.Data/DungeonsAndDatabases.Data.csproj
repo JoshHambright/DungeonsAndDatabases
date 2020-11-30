@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Campaign.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="Loot.cs" />

@@ -53,6 +53,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
+        /// <summary>
+        /// Get Account Info
+        /// </summary>
+        /// <returns>Gets Account Info</returns>
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -68,6 +72,10 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/Logout
+        /// <summary>
+        /// Logout
+        /// </summary>
+        /// <returns></returns>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -76,6 +84,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Manage Info
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -116,6 +130,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/ChangePassword
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Change Password</returns>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -136,6 +155,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/SetPassword
+        /// <summary>
+        /// Set Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Change Password's lesser played mirror</returns>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -155,6 +179,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// Add External Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Adds an external login</returns>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -193,6 +222,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Remove Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Removes a login</returns>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -222,6 +256,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogin
+        /// <summary>
+        /// Get External Login
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="error"></param>
+        /// <returns>Gets an external login if there is one to get</returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -279,6 +319,12 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Get external logins
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns>Gets all external logins if available</returns>
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -320,6 +366,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/Register
+        /// <summary>
+        /// Register
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Registers an account</returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -342,6 +393,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         // POST api/Account/RegisterExternal
+        /// <summary>
+        /// Register external
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Registers an external account</returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

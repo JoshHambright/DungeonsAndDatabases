@@ -492,6 +492,84 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.GetUserInfo">
+            <summary>
+            Get Account Info
+            </summary>
+            <returns>Gets Account Info</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.Logout">
+            <summary>
+            Logout
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.GetManageInfo(System.String,System.Boolean)">
+            <summary>
+            Manage Info
+            </summary>
+            <param name="returnUrl"></param>
+            <param name="generateState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.ChangePassword(DungeonsAndDatabases.WebAPI.Models.ChangePasswordBindingModel)">
+            <summary>
+            Change Password
+            </summary>
+            <param name="model"></param>
+            <returns>Change Password</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.SetPassword(DungeonsAndDatabases.WebAPI.Models.SetPasswordBindingModel)">
+            <summary>
+            Set Password
+            </summary>
+            <param name="model"></param>
+            <returns>Change Password's lesser played mirror</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.AddExternalLogin(DungeonsAndDatabases.WebAPI.Models.AddExternalLoginBindingModel)">
+            <summary>
+            Add External Login
+            </summary>
+            <param name="model"></param>
+            <returns>Adds an external login</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.RemoveLogin(DungeonsAndDatabases.WebAPI.Models.RemoveLoginBindingModel)">
+            <summary>
+            Remove Login
+            </summary>
+            <param name="model"></param>
+            <returns>Removes a login</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.GetExternalLogin(System.String,System.String)">
+            <summary>
+            Get External Login
+            </summary>
+            <param name="provider"></param>
+            <param name="error"></param>
+            <returns>Gets an external login if there is one to get</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.GetExternalLogins(System.String,System.Boolean)">
+            <summary>
+            Get external logins
+            </summary>
+            <param name="returnUrl"></param>
+            <param name="generateState"></param>
+            <returns>Gets all external logins if available</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.Register(DungeonsAndDatabases.WebAPI.Models.RegisterBindingModel)">
+            <summary>
+            Register
+            </summary>
+            <param name="model"></param>
+            <returns>Registers an account</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.AccountController.RegisterExternal(DungeonsAndDatabases.WebAPI.Models.RegisterExternalBindingModel)">
+            <summary>
+            Register external
+            </summary>
+            <param name="model"></param>
+            <returns>Registers an external account</returns>
+        </member>
         <member name="M:DungeonsAndDatabases.WebAPI.Controllers.CampaignController.Post(DungeonsAndDatabases.Models.CampaignModels.CampaignCreate)">
             <summary>
             Create a new Campaign.

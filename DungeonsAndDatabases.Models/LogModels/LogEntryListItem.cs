@@ -10,6 +10,8 @@ namespace DungeonsAndDatabases.Models.LogModels
     {
         public int LogID { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public DateTimeOffset DateUpdated { get; set; }        
+        public DateTimeOffset? DateUpdated { get; set; } 
+        public int CampaignID { get; set; }
+        public string CampaignName { get; set; }
     }
 }

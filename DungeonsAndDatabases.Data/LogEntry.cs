@@ -16,7 +16,7 @@ namespace DungeonsAndDatabases.Data
         public DateTimeOffset DateCreated { get; set; }
         public DateTimeOffset? DateUpdated { get; set; }
         [ForeignKey(nameof(Campaign))]
-        public int CampaignID { get; set }
+        public int CampaignID { get; set; }
         public virtual Campaign Campaign { get; set; }
         [ForeignKey(nameof(Player))]
         public Guid PlayerID { get; set; }

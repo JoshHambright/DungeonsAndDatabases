@@ -28,6 +28,9 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreatePlayerService();
+            var result = await service.CheckForDuplicatePlayer();
+            if (result == true)
+                return Conflict();
             if (await service.CreatePlayer(player) == false)
                 return InternalServerError();
             return Ok();

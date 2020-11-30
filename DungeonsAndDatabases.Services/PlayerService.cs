@@ -130,5 +130,19 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        //Check for duplicate player
+        public async Task<bool> CheckForDuplicatePlayer()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = await ctx
+                    .Players
+                    .FirstOrDefaultAsync(e => e.PlayerID == _playerId);
+                if (entity != null)
+                    return true;
+                return false;
+            }
+        }
     }
 }

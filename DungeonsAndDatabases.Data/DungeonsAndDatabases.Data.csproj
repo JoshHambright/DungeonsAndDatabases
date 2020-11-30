@@ -95,10 +95,6 @@
     <Compile Include="LogEntry.cs" />
     <Compile Include="Loot.cs" />
     <Compile Include="Membership.cs" />
-    <Compile Include="Migrations\202011301827003_one.cs" />
-    <Compile Include="Migrations\202011301827003_one.designer.cs">
-      <DependentUpon>202011301827003_one.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,11 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011301827003_one.resx">
-      <DependentUpon>202011301827003_one.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

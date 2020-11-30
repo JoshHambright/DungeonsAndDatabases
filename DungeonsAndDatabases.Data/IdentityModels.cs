@@ -40,7 +40,7 @@ namespace DungeonsAndDatabases.Data
         public DbSet<Campaign> Campaigns { get; set; } //<--- Campaigns DBSet
         public DbSet<Membership> Memberships { get; set; } //<--- Membership DBSet
         public DbSet<Loot> CampaignLoot { get; set; } //Loot items for campaigns DBSet
-
+        public DbSet<LogEntry> CampaignLogs { get; set; } //Campaign Logs
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

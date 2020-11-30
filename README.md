@@ -96,6 +96,7 @@ Stores information about a specific campaign, who the DM is, who the players are
   * `DELETE api/Campaign/{id}` Delete a campaign based on `Campaign ID`. You can only delete campaigns you've created.
  
 * **Membership**
+Manages character memberships for campaigns.  Only accessable to the DM of the campaign.
   * _You must have a campaign and atleast one character in the database to create a membership_
   * `POST api/Membership` Create a membership in a specified Campaign. Body must contain `Campaign ID` and `Character ID`. You can only add memberships to Campaigns you created.
   * `GET api/Membership` Returns all Memberships in the database
@@ -113,12 +114,12 @@ Stores information about a specific campaign, who the DM is, who the players are
    
  * **Campaign Notes**
  Keep a log of notes related to your campaigns, specific to each character or DM in the campaign.
- * _You must have a campaign and a player to create notes_
- * `POST api/CampaignLog` Create a new Campaign Log Entry. Body requires a `Message` that contains the information you want to add to the log and a `CampaignID`. User must have a character that is a member of the Campaign or be the Dungeon Master for the campaign to create an entry.
- * `GET api/CampaignLog` Get all Campaign logs in the database for currently logged in user
- * `GET api/CampaignLog/{id}` Get details on a specific campaign log entry specified by the `ID`. You must be the creator of the log entry to view it.
- * `PUT api/CampaignLog/{id}` Update a specified campaign log by `id`. You must be logged in as the creator of a log to edit it. Body requires as `message` containing the body of the log.
- * `DELETE api/CampaignLog/{id}` Delete a specified campaign log by `id`. You must be logged in as the creator to delete the log entry.
+   * _You must have a campaign and a player to create notes_
+   * `POST api/CampaignLog` Create a new Campaign Log Entry. Body requires a `Message` that contains the information you want to add to the log and a `CampaignID`. User must have a character that is a member of the Campaign or be the Dungeon Master for the campaign to create an entry.
+   * `GET api/CampaignLog` Get all Campaign logs in the database for currently logged in user
+   * `GET api/CampaignLog/{id}` Get details on a specific campaign log entry specified by the `ID`. You must be the creator of the log entry to view it.
+   * `PUT api/CampaignLog/{id}` Update a specified campaign log by `id`. You must be logged in as the creator of a log to edit it. Body requires as `message` containing the body of the log.
+   * `DELETE api/CampaignLog/{id}` Delete a specified campaign log by `id`. You must be logged in as the creator to delete the log entry.
    
  * **Dice**
  Dice Roller for RPG games

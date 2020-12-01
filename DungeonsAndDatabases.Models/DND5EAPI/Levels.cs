@@ -15,7 +15,7 @@ namespace DungeonsAndDatabases.Models.DND5EAPI
         public List<APIReference> feature_choices { get; set; } = new List<APIReference>();
         public List<APIReference> aPIReferences { get; set; } = new List<APIReference>();
         public Spellcasting Spellcasting { get; set; }
-        public Class_Specific class_Specific { get; set; }
+        //public Class_Specific class_Specific { get; set; }
         public APIReference Class { get; set;}
         public string url { get; set; }
 

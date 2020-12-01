@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class ability_scores
+    public class Ability_Scores
     {
         public string index { get; set; }
         public string name { get; set; }

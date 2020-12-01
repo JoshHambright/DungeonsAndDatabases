@@ -10,6 +10,6 @@ namespace DungeonsAndDatabases.Services
 {
     public class EquipmentService
     {
-       
+
     }
 }

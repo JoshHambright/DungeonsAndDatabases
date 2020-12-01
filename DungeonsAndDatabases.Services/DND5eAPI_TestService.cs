@@ -16,6 +16,7 @@ namespace DungeonsAndDatabases.Services
         private readonly string _classes = "classes/";
         private readonly string _races = "races/";
         private readonly string _equipment = "equipment/";
+        private readonly string _magic_item = "magic-item/";
         //    public async Task<Race> GetRaceFromAPIAsync(string race)
         //    {
         //        HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _races + race);
@@ -74,6 +75,11 @@ namespace DungeonsAndDatabases.Services
                     //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
                     return gear;
                 }
+                //if (result.Equipment_Category.name == "Wounderous Item")
+                //{
+                //    HttpResponseMessage gearResponse = await _httpClient.GetAsync(_baseUrl + _magic_item + equipment);
+                //}
+
                 return result;
             }
             return null;

@@ -49,6 +49,30 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IHttpActionResult> GetEquipmentByIDAsync(string equipment)
+        {
+
+        }
+
+        [HttpPost]
+        public async Task<IHttpActionResult> CreateEquipmentAsync(string equipment)
+        {
+
+        }
+
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateEquipmentAsync(string equipment)
+        {
+
+        }
+
+        [HttpDelete]
+        public async Task<IHttpActionResult> DeleteEquipmentAsync(string equipment)
+        {
+
+        }
+
 
     }
 }

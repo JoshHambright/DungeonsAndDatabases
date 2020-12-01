@@ -82,7 +82,7 @@ Stores basic information about a character, who owns the character and which cam
   * _You must create a player before you can create a character._
   * `POST api/Character` Creates a Character. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`
   * `GET api/Character` Shows all of the characters associated with your Player ID
-  * `GET api/Character/{id}` Shows the details on a specified `Character ID`
+  * `GET api/Character/{id}` Shows the details on a specified `Character ID`. If the class and race are in the DND5EAPI(https://www.dnd5eapi.co/) database details for the race and class will be loaded into the returned information as well.
   * `PUT api/Character/{id}` Updates a Character based on a specified `Character ID`. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`. You can only edit characters you created.
   * `DELETE api/Character/{id}` Deletes a character based on a specified `Character ID`. Can only delete characters you created.
 
@@ -135,7 +135,7 @@ Manages character memberships for campaigns.  Only accessable to the DM of the c
 * **Open5e** more inspiration about rules and building classes 
   * https://open5e.com/
 
-* **DND 5E API** Open API for the basic 5e Rules, looking to potentially integrate this API in the future
+* **DND 5E API** Open API for the basic 5e Rules.  Used to populat race and class details in the Character details.
   * https://www.dnd5eapi.co/
 
 * **Stack Overflow** a wealth of information when you can find the right question and answer, here are a few we found helpful

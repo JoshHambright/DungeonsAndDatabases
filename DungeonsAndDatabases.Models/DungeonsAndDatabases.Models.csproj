@@ -84,7 +84,6 @@
     <Compile Include="DND5EAPI\Spellcasting.cs" />
     <Compile Include="DND5EAPI\Subclass.cs" />
     <Compile Include="DND5EAPI\Subraces.cs" />
->
     <Compile Include="LogModels\LogEntryCreate.cs" />
     <Compile Include="LogModels\LogEntryDetails.cs" />
     <Compile Include="LogModels\LogEntryListItem.cs" />

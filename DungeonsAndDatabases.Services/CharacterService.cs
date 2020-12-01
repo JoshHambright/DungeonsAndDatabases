@@ -83,11 +83,13 @@ namespace DungeonsAndDatabases.Services
                     ctx
                         .Characters
                         .Single(c => c.CharacterID == id);
-                HttpResponseMessage race_response = await _httpClient.GetAsync(_baseUrl + _races + cat.Race);
+                HttpResponseMessage race_response = await _httpClient
+                    .GetAsync(_baseUrl + _races + cat.Race);
                 var dnd5eRace = new Race_Short();
                 if (race_response.IsSuccessStatusCode)
                 {
-                    Race_Short result = await race_response.Content.ReadAsAsync<Race_Short>();
+                    Race_Short result = await race_response.Content
+                        .ReadAsAsync<Race_Short>();
                     dnd5eRace = result;
                     dnd5eRace.url = _dnd5eAPI + dnd5eRace.url;
                 }
@@ -96,10 +98,12 @@ namespace DungeonsAndDatabases.Services
                     dnd5eRace = null;
                 }
                 var dnd5eClass = new Classes_Short();
-                HttpResponseMessage class_response = await _httpClient.GetAsync(_baseUrl + _classes + cat.Class);
+                HttpResponseMessage class_response = await _httpClient
+                    .GetAsync(_baseUrl + _classes + cat.Class);
                 if (class_response.IsSuccessStatusCode)
                 {
-                    Classes_Short result = await class_response.Content.ReadAsAsync<Classes_Short>();
+                    Classes_Short result = await class_response.Content
+                        .ReadAsAsync<Classes_Short>();
                     dnd5eClass = result;
                     dnd5eClass.url = _dnd5eAPI + dnd5eClass.url;
                     dnd5eClass.starting_equipment = _dnd5eAPI + dnd5eClass.starting_equipment;

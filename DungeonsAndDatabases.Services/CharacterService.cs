@@ -1,6 +1,7 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CharacterModels;
 using DungeonsAndDatabases.Models.DND5EAPI;
+using DungeonsAndDatabases.Models.EquipmentModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -124,7 +125,17 @@ namespace DungeonsAndDatabases.Services
                         Class = cat.Class,
                         Level = cat.Level,
                         Race_Details = dnd5eRace,
-                        Class_Details = dnd5eClass
+                        Class_Details = dnd5eClass,
+                        Inventory = cat.Inventory.Select(
+                            x =>
+                                new EquipmentListView
+                                {
+                                    ID = x.ID,
+                                    Name= x.Name,
+                                    CharacterID = x.CharacterID,
+                                    EquipmentType = x.EquipmentType
+                                }
+                            ).ToList()
 
                     };
             }

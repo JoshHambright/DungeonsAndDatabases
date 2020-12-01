@@ -73,6 +73,7 @@
     <Compile Include="DND5EAPI\Choice.cs" />
     <Compile Include="DND5EAPI\ClassAPIResource.cs" />
     <Compile Include="DND5EAPI\Classes.cs" />
+    <Compile Include="DND5EAPI\Classes_Short.cs" />
     <Compile Include="DND5EAPI\Cost.cs" />
     <Compile Include="DND5EAPI\Features.cs" />
     <Compile Include="DND5EAPI\Level.cs" />

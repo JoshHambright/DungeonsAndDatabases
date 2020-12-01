@@ -17,6 +17,8 @@ namespace DungeonsAndDatabases.Models.CharacterModels
 
         public Race_Short Race_Details { get; set; }
 
+        public Classes_Short Class_Details { get; set; }
+
         //public List<string> Inventory;
 
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class Range
+    public class AdventureGear : Equipment
     {
-        public string normal { get; set; }
-        public string Long { get; set; }
+        //public string Desc { get; set; }
+        public APIReference gear_category { get; set; }
     }
 }

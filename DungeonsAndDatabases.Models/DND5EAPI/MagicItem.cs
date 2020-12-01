@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class Range
+    public class MagicItem
     {
-        public string normal { get; set; }
-        public string Long { get; set; }
+        public string Desc { get; set; }
     }
 }

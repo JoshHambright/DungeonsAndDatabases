@@ -49,12 +49,31 @@ namespace DungeonsAndDatabases.Services
         //    }
         public async Task<Equipment> GetEquipmentFromAPIAsync(string equipment)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _classes + equipment);
+            HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
             if (response.IsSuccessStatusCode)
             {
                 Equipment result = await response.Content.ReadAsAsync<Equipment>();
                 if (result.Equipment_Category.name == "Weapon")
-                    result = await response.Content.ReadAsAsync<Weapon>();
+                {
+                    HttpResponseMessage weaponResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
+                    Weapon weapon = await weaponResponse.Content.ReadAsAsync<Weapon>();
+                    //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
+                    return weapon;
+                }
+                if (result.Equipment_Category.name == "Armor")
+                {
+                    HttpResponseMessage armorResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
+                    Armor armor = await armorResponse.Content.ReadAsAsync<Armor>();
+                    //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
+                    return armor;
+                }
+                if (result.Equipment_Category.name == "Adventuring Gear")
+                {
+                    HttpResponseMessage gearResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
+                    AdventureGear gear = await gearResponse.Content.ReadAsAsync<AdventureGear>();
+                    //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
+                    return gear;
+                }
                 return result;
             }
             return null;

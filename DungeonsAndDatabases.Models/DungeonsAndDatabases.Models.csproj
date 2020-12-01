@@ -60,8 +60,11 @@
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
     <Compile Include="DiceModels\DiceResults.cs" />
     <Compile Include="DiceModels\DiceSingle.cs" />
+    <Compile Include="DND5EAPI\AdventureGear.cs" />
+    <Compile Include="DND5EAPI\Armor.cs" />
     <Compile Include="DND5EAPI\Damage.cs" />
     <Compile Include="DND5EAPI\Equipment.cs" />
+    <Compile Include="DND5EAPI\MagicItem.cs" />
     <Compile Include="DND5EAPI\Range.cs" />
     <Compile Include="DND5EAPI\Weapon.cs" />
     <Compile Include="EquipmentModels\Armor_Class.cs" />

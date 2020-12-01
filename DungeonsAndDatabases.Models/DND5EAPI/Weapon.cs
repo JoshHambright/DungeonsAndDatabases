@@ -15,7 +15,7 @@ namespace DungeonsAndDatabases.Models.DND5EAPI
         public Damage damage { get; set; }
         public Range Range { get; set; }
         public int weight { get; set; }
-        public APIReference Properties { get; set; }
+        public List<APIReference> Properties { get; set; } = new List<APIReference>();
         public string url { get; set; }
     }
 }

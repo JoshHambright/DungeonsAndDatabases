@@ -19,6 +19,7 @@ namespace DungeonsAndDatabases.Services
         //DND5EAPI Stuff
         private readonly HttpClient _httpClient = new HttpClient();
         private readonly string _baseUrl = "https://www.dnd5eapi.co/api/";
+        private readonly string _dnd5eAPI = "https://www.dnd5eapi.co";
         private readonly string _classes = "classes/";
         private readonly string _races = "races/";
 
@@ -82,18 +83,34 @@ namespace DungeonsAndDatabases.Services
                     ctx
                         .Characters
                         .Single(c => c.CharacterID == id);
-                HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _races + cat.Race);
+                HttpResponseMessage race_response = await _httpClient.GetAsync(_baseUrl + _races + cat.Race);
                 var dnd5eRace = new Race_Short();
-                if (response.IsSuccessStatusCode)
+                if (race_response.IsSuccessStatusCode)
                 {
-                    Race_Short result = await response.Content.ReadAsAsync<Race_Short>();
+                    Race_Short result = await race_response.Content.ReadAsAsync<Race_Short>();
                     dnd5eRace = result;
-                    dnd5eRace.url = "https://www.dnd5eapi.co" + dnd5eRace.url;
+                    dnd5eRace.url = _dnd5eAPI + dnd5eRace.url;
                 }
                 else
                 {
                     dnd5eRace = null;
                 }
+                var dnd5eClass = new Classes_Short();
+                HttpResponseMessage class_response = await _httpClient.GetAsync(_baseUrl + _classes + cat.Class);
+                if (class_response.IsSuccessStatusCode)
+                {
+                    Classes_Short result = await class_response.Content.ReadAsAsync<Classes_Short>();
+                    dnd5eClass = result;
+                    dnd5eClass.url = _dnd5eAPI + dnd5eClass.url;
+                    dnd5eClass.starting_equipment = _dnd5eAPI + dnd5eClass.starting_equipment;
+                    dnd5eClass.class_levels = _dnd5eAPI + dnd5eClass.class_levels;
+                }
+                else
+                {
+                    dnd5eClass = null;
+                }
+
+
                 return
                     new CharacterDetail
                     {
@@ -102,7 +119,8 @@ namespace DungeonsAndDatabases.Services
                         Race = cat.Race,
                         Class = cat.Class,
                         Level = cat.Level,
-                        Race_Details = dnd5eRace
+                        Race_Details = dnd5eRace,
+                        Class_Details = dnd5eClass
 
                     };
             }

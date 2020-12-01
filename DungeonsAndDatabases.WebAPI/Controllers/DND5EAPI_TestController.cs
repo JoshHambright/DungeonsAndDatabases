@@ -33,6 +33,14 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IHttpActionResult> GetClassInfoAsync(string classes)
+        {
+            DND5eAPI_TestService service = CreateDND5eAPIService();
+            var result = await service.GetShortClassFromAPIAsync(classes);
+            return Ok(result);
+        }
+
 
     }
 }

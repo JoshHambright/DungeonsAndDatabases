@@ -15,6 +15,6 @@ namespace DungeonsAndDatabases.Models.EquipmentModels
         public string Notes { get; set; }
         public int CharacterID { get; set; }
         public EquipmentType EquipmentType { get; set; }
-        public APIReference  _equipment { get; set; }
+        public ApiEquipment  DND5EAPI_Info { get; set; }
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="CampaignLogService.cs" />
     <Compile Include="CampaignLootService.cs" />
     <Compile Include="DiceService.cs" />
+    <Compile Include="DND5eAPI_TestService.cs" />
     <Compile Include="EquipmentService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="CampaignService.cs" />

@@ -11,11 +11,11 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
 {
     public class DND5EAPI_TestController : ApiController
     {
-        //private DND5eAPI_TestService CreateDND5eAPIService()
-        //{
-        //    var service = new DND5eAPI_TestService();
-        //    return service;
-        //}
+        private DND5eAPI_TestService CreateDND5eAPIService()
+        {
+            var service = new DND5eAPI_TestService();
+            return service;
+        }
 
         //[HttpGet]
         //public async Task<IHttpActionResult> GetShortRaceInfoAsync(string race)
@@ -40,6 +40,14 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         //    var result = await service.GetShortClassFromAPIAsync(classes);
         //    return Ok(result);
         //}
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetEquipmentAsync(string equipment)
+        {
+            DND5eAPI_TestService service = CreateDND5eAPIService();
+            var result = await service.GetEquipmentFromAPIAsync(equipment);
+            return Ok(result);
+        }
 
 
     }

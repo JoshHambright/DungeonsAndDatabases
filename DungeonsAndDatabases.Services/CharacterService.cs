@@ -88,7 +88,7 @@ namespace DungeonsAndDatabases.Services
                 {
                     Race_Short result = await response.Content.ReadAsAsync<Race_Short>();
                     dnd5eRace = result;
-                    dnd5eRace.url = "https://www.dnd5eapi.co/" + dnd5eRace.url;
+                    dnd5eRace.url = "https://www.dnd5eapi.co" + dnd5eRace.url;
                 }
                 else
                 {

@@ -60,11 +60,30 @@
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
     <Compile Include="DiceModels\DiceResults.cs" />
     <Compile Include="DiceModels\DiceSingle.cs" />
+
     <Compile Include="EquipmentModels\EquipmentAdventGear.cs" />
     <Compile Include="EquipmentModels\EquipmentArmor.cs" />
     <Compile Include="EquipmentModels\EquipmentMagicItems.cs" />
     <Compile Include="EquipmentModels\EquipmentPacks.cs" />
     <Compile Include="EquipmentModels\EquipmentWeapons.cs" />
+
+    <Compile Include="DND5EAPI\Ability_Bonus.cs" />
+    <Compile Include="DND5EAPI\Ability_Scores.cs" />
+    <Compile Include="DND5EAPI\APIReference.cs" />
+    <Compile Include="DND5EAPI\Choice.cs" />
+    <Compile Include="DND5EAPI\ClassAPIResource.cs" />
+    <Compile Include="DND5EAPI\Classes.cs" />
+    <Compile Include="DND5EAPI\Cost.cs" />
+    <Compile Include="DND5EAPI\Features.cs" />
+    <Compile Include="DND5EAPI\Level.cs" />
+    <Compile Include="DND5EAPI\Levels.cs" />
+    <Compile Include="DND5EAPI\Proficiencies.cs" />
+    <Compile Include="DND5EAPI\Race.cs" />
+    <Compile Include="DND5EAPI\Race_Short.cs" />
+    <Compile Include="DND5EAPI\Spellcasting.cs" />
+    <Compile Include="DND5EAPI\Subclass.cs" />
+    <Compile Include="DND5EAPI\Subraces.cs" />
+>
     <Compile Include="LogModels\LogEntryCreate.cs" />
     <Compile Include="LogModels\LogEntryDetails.cs" />
     <Compile Include="LogModels\LogEntryListItem.cs" />

@@ -1,9 +1,11 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CharacterModels;
+using DungeonsAndDatabases.Models.DND5EAPI;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +15,12 @@ namespace DungeonsAndDatabases.Services
     {
         //GUID
         private readonly Guid _userId;
+
+        //DND5EAPI Stuff
+        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly string _baseUrl = "https://www.dnd5eapi.co/api/";
+        private readonly string _classes = "classes/";
+        private readonly string _races = "races/";
 
         public CharacterService(Guid userId)
         {
@@ -74,6 +82,18 @@ namespace DungeonsAndDatabases.Services
                     ctx
                         .Characters
                         .Single(c => c.CharacterID == id);
+                HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _races + cat.Race);
+                var dnd5eRace = new Race_Short();
+                if (response.IsSuccessStatusCode)
+                {
+                    Race_Short result = await response.Content.ReadAsAsync<Race_Short>();
+                    dnd5eRace = result;
+                    dnd5eRace.url = "https://www.dnd5eapi.co" + dnd5eRace.url;
+                }
+                else
+                {
+                    dnd5eRace = null;
+                }
                 return
                     new CharacterDetail
                     {
@@ -81,7 +101,9 @@ namespace DungeonsAndDatabases.Services
                         CharacterName = cat.CharacterName,
                         Race = cat.Race,
                         Class = cat.Class,
-                        Level = cat.Level
+                        Level = cat.Level,
+                        Race_Details = dnd5eRace
+
                     };
             }
         }

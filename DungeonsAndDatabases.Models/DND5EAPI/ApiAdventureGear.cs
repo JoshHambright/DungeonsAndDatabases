@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class AdventureGear : Equipment
+    public class ApiAdventureGear : ApiEquipment
     {
         //public string Desc { get; set; }
         public APIReference gear_category { get; set; }

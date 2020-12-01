@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class Equipment
+    public class ApiEquipment
     {
         public string Name { get; set; }
         public string Index { get; set; }

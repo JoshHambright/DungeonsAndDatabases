@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Data
 {
+    public enum EquipmentType {Equipment=1, MagicItem }
     public class Equipment
     {
         [Key]
         public string Name { get; set; } 
         public string Index { get; set; }
         public string Desc { get; set; }
+        public EquipmentType EquipmentType { get; set; }
+        
     }
 }

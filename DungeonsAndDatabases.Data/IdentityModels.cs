@@ -41,6 +41,7 @@ namespace DungeonsAndDatabases.Data
         public DbSet<Membership> Memberships { get; set; } //<--- Membership DBSet
         public DbSet<Loot> CampaignLoot { get; set; } //Loot items for campaigns DBSet
         public DbSet<LogEntry> CampaignLogs { get; set; } //Campaign Logs
+        public DbSet<Equipment> Equipment { get; set; } // Equipment 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

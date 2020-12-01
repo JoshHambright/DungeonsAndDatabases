@@ -13,8 +13,6 @@ namespace DungeonsAndDatabases.Data
         [Key]
         public string Name { get; set; } 
         public string Index { get; set; }
-        public int Weight { get; set; }
-        public double Cost { get; set; }
         public string Desc { get; set; }
     }
 }

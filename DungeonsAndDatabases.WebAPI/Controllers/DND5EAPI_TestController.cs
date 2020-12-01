@@ -18,10 +18,18 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetRaceInfoAsync(string race)
+        public async Task<IHttpActionResult> GetShortRaceInfoAsync(string race)
         {
             DND5eAPI_TestService service = CreateDND5eAPIService();
-            var result = await service.GetRaceFromAPIAsync(race);
+            var result = await service.GetShortRaceFromAPIAsync(race);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetRaceInfoAsync(string racefull)
+        {
+            DND5eAPI_TestService service = CreateDND5eAPIService();
+            var result = await service.GetRaceFromAPIAsync(racefull);
             return Ok(result);
         }
 

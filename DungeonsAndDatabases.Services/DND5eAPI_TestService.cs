@@ -25,5 +25,15 @@ namespace DungeonsAndDatabases.Services
             }
             return null;
         }
+        public async Task<Race_Short> GetShortRaceFromAPIAsync(string race)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _races + race);
+            if (response.IsSuccessStatusCode)
+            {
+                Race_Short result = await response.Content.ReadAsAsync<Race_Short>();
+                return result;
+            }
+            return null;
+        }
     }
 }

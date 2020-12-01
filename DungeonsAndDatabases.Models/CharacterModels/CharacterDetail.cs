@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DungeonsAndDatabases.Models.DND5EAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace DungeonsAndDatabases.Models.CharacterModels
         public string Class { get; set; }
         public string Level { get; set; }
 
+        public Race_Short Race_Details { get; set; }
 
         //public List<string> Inventory;
 

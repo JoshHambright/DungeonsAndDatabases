@@ -12,7 +12,7 @@ namespace DungeonsAndDatabases.Models.EquipmentModels
         public string Name { get; set; }
         public string Index { get; set; }
         public string armor_category { get; set; }
-        public object armor_class { get; set; }
+        public Armor_Class armor_class { get; set; }
 
         public bool stealth_disadvantage { get; set; }
     }

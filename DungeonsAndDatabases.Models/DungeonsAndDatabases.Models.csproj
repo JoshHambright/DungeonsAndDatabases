@@ -60,6 +60,7 @@
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
     <Compile Include="DiceModels\DiceResults.cs" />
     <Compile Include="DiceModels\DiceSingle.cs" />
+    <Compile Include="EquipmentModels\Armor_Class.cs" />
     <Compile Include="EquipmentModels\EquipmentAdventGear.cs" />
     <Compile Include="EquipmentModels\EquipmentArmor.cs" />
     <Compile Include="EquipmentModels\EquipmentMagicItems.cs" />

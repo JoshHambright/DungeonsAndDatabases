@@ -21,7 +21,7 @@ namespace DungeonsAndDatabases.Data
         [Required]
         public string Level { get; set; }
 
-        //public List<Equipment> Inventory = new List<string>();
+        public List<Equipment> Inventory = new List<Equipment>();
 
         public virtual Player Player { get; set; }
 

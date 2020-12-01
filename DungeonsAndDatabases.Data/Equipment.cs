@@ -18,8 +18,8 @@ namespace DungeonsAndDatabases.Data
         public string Notes { get; set; }
         public virtual Character Character { get; set; }
         public EquipmentType EquipmentType { get; set; }
-
         [ForeignKey(nameof(Character))]
-        public int CharacterID { get; set; }
+        public int CharacterID { get; set; }        
+
     }
 }

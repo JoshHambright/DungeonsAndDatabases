@@ -60,6 +60,11 @@
     <Compile Include="CampaignModels\CampaignListViewWithCharacter.cs" />
     <Compile Include="DiceModels\DiceResults.cs" />
     <Compile Include="DiceModels\DiceSingle.cs" />
+    <Compile Include="EquipmentModels\EquipmentAdventGear.cs" />
+    <Compile Include="EquipmentModels\EquipmentArmor.cs" />
+    <Compile Include="EquipmentModels\EquipmentMagicItems.cs" />
+    <Compile Include="EquipmentModels\EquipmentPacks.cs" />
+    <Compile Include="EquipmentModels\EquipmentWeapons.cs" />
     <Compile Include="LogModels\LogEntryCreate.cs" />
     <Compile Include="LogModels\LogEntryDetails.cs" />
     <Compile Include="LogModels\LogEntryListItem.cs" />
@@ -97,9 +102,7 @@
       <Name>DungeonsAndDatabases.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EquipmentModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

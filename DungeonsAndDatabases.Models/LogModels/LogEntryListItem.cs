@@ -13,5 +13,6 @@ namespace DungeonsAndDatabases.Models.LogModels
         public DateTimeOffset? DateUpdated { get; set; } 
         public int CampaignID { get; set; }
         public string CampaignName { get; set; }
+        public string Message { get; set; }
     }
 }

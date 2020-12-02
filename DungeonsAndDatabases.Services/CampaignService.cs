@@ -1,5 +1,6 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.LogModels;
 using DungeonsAndDatabases.Models.Loot;
 using DungeonsAndDatabases.Models.MembershipModels;
 using DungeonsAndDatabases.Models.PlayerModels;
@@ -102,6 +103,18 @@ namespace DungeonsAndDatabases.Services
                                 Description = e.Description,
                                 ValueInGP = e.ValueInGP,
                                 CampaignID = e.CampaignID
+                            }
+                            ).ToList(),
+                        CampaignLog = entity.CampaignLog.Select(
+                            e =>
+                            new LogEntryListItem
+                            {
+                                LogID = e.LogID,
+                                DateCreated = e.DateCreated,
+                                DateUpdated = e.DateUpdated,
+                                CampaignID = e.CampaignID,
+                                CampaignName = e.Campaign.CampaignName,
+                                Message = e.Message
                             }
                             ).ToList()
                     };

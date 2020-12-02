@@ -150,6 +150,7 @@ namespace DungeonsAndDatabases.Services
                 return
                 new EquipmentDetails
                 {
+                    Name = equip.Name,
                     ID = equip.ID,
                     Notes = equip.Notes,
                     CharacterID = equip.CharacterID,

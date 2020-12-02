@@ -21,6 +21,7 @@ namespace DungeonsAndDatabases.Services
         private readonly string _baseUrl = "https://www.dnd5eapi.co/api/";
         private readonly string _dnd5eAPI = "https://www.dnd5eapi.co";
         private readonly string _equipment = "equipment/";
+        private readonly string _magicItem = "magic-items/";
         //private readonly string _magic_item = "magic-item/";
 
         public EquipmentService(Guid userId)
@@ -115,10 +116,19 @@ namespace DungeonsAndDatabases.Services
                     .Equipment
                     .Single(e => e.ID == ID);
                 var result = new ApiEquipment();
+
+
                 HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
                 if (response.IsSuccessStatusCode)
                 {
                     result = await response.Content.ReadAsAsync<ApiEquipment>();
+                    if (equip.EquipmentType == EquipmentType.MagicItem)
+                    {
+                        HttpResponseMessage magicItemResponse = await _httpClient.GetAsync(_baseUrl + _magicItem + equip.Name);
+                        ApiMagicItem magicItem = await magicItemResponse.Content.ReadAsAsync<ApiMagicItem>();
+                        result = magicItem;
+                    }
+
                     if (result.Equipment_Category.name == "Weapon")
                     {
                         HttpResponseMessage weaponResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
@@ -139,6 +149,17 @@ namespace DungeonsAndDatabases.Services
                         ApiAdventureGear gear = await gearResponse.Content.ReadAsAsync<ApiAdventureGear>();
                         //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
                         result = gear;
+                    }
+                }
+                response = await _httpClient.GetAsync(_baseUrl + _magicItem + equip.Name);
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<ApiEquipment>();
+                    if (equip.EquipmentType == EquipmentType.MagicItem)
+                    {
+                        HttpResponseMessage magicItemResponse = await _httpClient.GetAsync(_baseUrl + _magicItem + equip.Name);
+                        ApiMagicItem magicItem = await magicItemResponse.Content.ReadAsAsync<ApiMagicItem>();
+                        result = magicItem;
                     }
                 }
                 else
@@ -198,7 +219,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                if(entity.PlayerID != _userId)
+                if (entity.PlayerID != _userId)
                     return false;
                 return true;
             }

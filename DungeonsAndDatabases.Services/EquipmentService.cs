@@ -13,6 +13,8 @@ namespace DungeonsAndDatabases.Services
 {
     public class EquipmentService
     {
+        //Service for the Equipment objects accessed via the inventory Endpoint 
+
         //GUID
         private readonly Guid _userId;
 
@@ -83,7 +85,7 @@ namespace DungeonsAndDatabases.Services
         //    }
         //    return null;
         //}
-
+        // Get the inventory of a character 
         public async Task<IEnumerable<EquipmentListView>> GetEquipmentByCharacterId(int characterId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -105,7 +107,7 @@ namespace DungeonsAndDatabases.Services
                 return await query.ToListAsync();
             }
         }
-
+        //Get the details on a specific Equipment object based on Equipment ID
         public async Task<EquipmentDetails> GetEquipmentByEquipmentID(int ID)
         {
             using (var ctx = new ApplicationDbContext())
@@ -117,7 +119,7 @@ namespace DungeonsAndDatabases.Services
                     .Single(e => e.ID == ID);
                 var result = new ApiEquipment();
 
-
+                //Code below accesses the DND5EAPI and pulls data if available for the object
                 HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
                 if (response.IsSuccessStatusCode)
                 {
@@ -151,6 +153,7 @@ namespace DungeonsAndDatabases.Services
                         result = gear;
                     }
                 }
+                //Code to pull details for magic items
                 response = await _httpClient.GetAsync(_baseUrl + _magicItem + equip.Name);
                 if (response.IsSuccessStatusCode)
                 {
@@ -184,7 +187,7 @@ namespace DungeonsAndDatabases.Services
 
 
 
-
+        //Update an equipment item in a characters inventory
         public async Task<bool> UpdateEquipment(int id, EquipmentUpdate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -198,7 +201,7 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-
+        //Delete an equipment item from a characters inventory
         public async Task<bool> DeleteEquipment(int id)
         {
 
@@ -212,7 +215,7 @@ namespace DungeonsAndDatabases.Services
             }
 
         }
-
+        //Check credentials to make sure you own a character before editing the inventory
         public async Task<bool> CheckCharacterCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -224,7 +227,7 @@ namespace DungeonsAndDatabases.Services
                 return true;
             }
         }
-
+        //Check the credentials on an equipment object before doing update or delete
         public async Task<bool> CheckEquipmentCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())

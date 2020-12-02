@@ -17,6 +17,8 @@ Below you will find documentation for the API and how to clone, install and use 
 ------
 * Create, View, Edit and Delete your own player profile
 * Create, View, Edit and Delete multiple characters per player
+* Create, View, Edit and Delete items from you Characters Inventory
+* Integrates the [DnD5EAPI](https://www.dnd5eapi.co/) to populate Race, Class, and Equipment details when avaiable.
 * Create, View, Edit and Delete Campaigns as the Dungeon Master
 * Track campaign membership and allow only your players and yourself to view your campaigns
 * Keep track of home brew items and loot found by the party

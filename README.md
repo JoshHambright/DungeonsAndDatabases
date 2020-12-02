@@ -87,7 +87,15 @@ Stores basic information about a character, who owns the character and which cam
   * `GET api/Character/{id}` Shows the details on a specified `Character ID`
   * `PUT api/Character/{id}` Updates a Character based on a specified `Character ID`. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`. You can only edit characters you created.
   * `DELETE api/Character/{id}` Deletes a character based on a specified `Character ID`. Can only delete characters you created.
-
+* **Inventory**
+Stores an inventory of items for a character. Designed to work with the [DnD5EAPI](https://www.dnd5eapi.co/).
+  * _You Must create a character before adding inventory_
+  * `POST api/Inventory` Creates an equipment item in specified characters inventory. Body of request must contain `Name` of the item, any `Notes` you would like to attach to the item , `CharacterID` of the character you'd like to add the item to(you must be the creator of this character to add an item to their inventory), and `EquipmentType` of either `Equipment` or `MagicItem`
+  * `GET api/Inventory?characterid={characterid}` Shows the full inventory for a specific character based on the `characterID`
+  * `GET api/Inventory/{id}` Returns the details on a specific inventory item.  Takes the name of the item and checks it against the [DnD5EAPI](https://www.dnd5eapi.co/) and includes what it finds there if anything in the results. You must have created the item in order to view its details.
+  * `PUT api/Inventory/{id}` Updates an Equipment item based on the `id` of the item.  Body requires `name`, `notes` and `EquipmentType` of either `Equipment` or `MagicItem`. You must be the creator of the item to edit it.
+  * `DELETE api/Inventory/{id}` Deletes an item based on the `id` corresponding to the ItemID of the item.  You must be the creator of an item to delete it.
+  
 * **Campaign**
 Stores information about a specific campaign, who the DM is, who the players are, what game system the campaign is using, and any special loot the DM has added for the party.
   * _You must create a player before creating a campaign_

@@ -48,12 +48,12 @@ namespace DungeonsAndDatabases.Services
         //        }
         //        return null;
         //    }
-        public async Task<Equipment> GetEquipmentFromAPIAsync(string equipment)
+        public async Task<ApiEquipment> GetEquipmentFromAPIAsync(string equipment)
         {
             HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
             if (response.IsSuccessStatusCode)
             {
-                Equipment result = await response.Content.ReadAsAsync<Equipment>();
+                ApiEquipment result = await response.Content.ReadAsAsync<ApiEquipment>();
                 if (result.Equipment_Category.name == "Weapon")
                 {
                     HttpResponseMessage weaponResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
@@ -84,5 +84,7 @@ namespace DungeonsAndDatabases.Services
             }
             return null;
         }
+
+
     }
 }

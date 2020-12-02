@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsAndDatabases.Services
+namespace DungeonsAndDatabases.Models.EquipmentModels
 {
-    public class ReturnGuidService
+    public class Armor_Class
     {
-        
+        public int Base { get; set; }
     }
 }

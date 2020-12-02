@@ -1,5 +1,6 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CampaignModels;
+using DungeonsAndDatabases.Models.LogModels;
 using DungeonsAndDatabases.Models.Loot;
 using DungeonsAndDatabases.Models.MembershipModels;
 using DungeonsAndDatabases.Models.PlayerModels;
@@ -84,7 +85,7 @@ namespace DungeonsAndDatabases.Services
                         DmGuid = entity.DmGuid,
                         DmName = entity.DungeonMaster.PlayerName,
                         Memberships = entity.Memberships.Select(
-                            e => 
+                            e =>  //Shows the campaign membership
                             new MembershipWithPlayerName { 
                                 CampaignId = e.CampaignId,
                                 CampaignName = e.Campaign.CampaignName,
@@ -94,7 +95,7 @@ namespace DungeonsAndDatabases.Services
                             }
                             ).ToList(),
                         CampaignLoot = entity.CampaignLoot.Select(
-                            e => 
+                            e => //Populates the campaign loot
                             new LootDetails
                             {
                                 LootID = e.LootID,
@@ -102,6 +103,18 @@ namespace DungeonsAndDatabases.Services
                                 Description = e.Description,
                                 ValueInGP = e.ValueInGP,
                                 CampaignID = e.CampaignID
+                            }
+                            ).ToList(),
+                        CampaignLog = entity.CampaignLog.Select(
+                            e => //Populates the Log entries the user has on the campaign
+                            new LogEntryListItem
+                            {
+                                LogID = e.LogID,
+                                DateCreated = e.DateCreated,
+                                DateUpdated = e.DateUpdated,
+                                CampaignID = e.CampaignID,
+                                CampaignName = e.Campaign.CampaignName,
+                                Message = e.Message
                             }
                             ).ToList()
                     };
@@ -136,14 +149,14 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-
+        //Check the user to see if they are the DM of the campaign
         public async Task<bool> CheckDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Campaigns
                     .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId)
+                if (entity == null || entity.DmGuid != _userId)
                     return false;
                 return true;
             }

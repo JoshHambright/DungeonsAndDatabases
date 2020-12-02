@@ -69,12 +69,13 @@
     <Compile Include="CampaignLogService.cs" />
     <Compile Include="CampaignLootService.cs" />
     <Compile Include="DiceService.cs" />
+    <Compile Include="DND5eAPI_TestService.cs" />
+    <Compile Include="EquipmentService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="CampaignService.cs" />
     <Compile Include="MembershipService.cs" />
     <Compile Include="CharacterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnGuidService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

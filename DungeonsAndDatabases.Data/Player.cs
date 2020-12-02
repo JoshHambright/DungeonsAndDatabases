@@ -9,6 +9,7 @@ namespace DungeonsAndDatabases.Data
 {
     public class Player
     {
+        //Player class.  Each User can only have one Player.
         [Key]
         //public Guid PlayerID { get; set; } = Guid.NewGuid();
         public Guid PlayerID { get; set; }

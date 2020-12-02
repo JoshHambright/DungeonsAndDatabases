@@ -112,25 +112,26 @@ namespace DungeonsAndDatabases.Services
             }
         }
 
+        //Check to see if the user is the DM of a campaign
         public async Task<bool> CheckDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.CampaignLoot
                     .Where(e => e.LootID == id).FirstOrDefaultAsync();
-                if (entity.Campaign.DmGuid != _userId)
+                if (entity == null || entity.Campaign.DmGuid != _userId)
                     return false;
                 return true;
             }
         }
-
+        //Check to see if a user is the DM of a campaign
         public async Task<bool> CheckCreateCredentials(int campaignId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Campaigns
                     .Where(e => e.CampaignID == campaignId).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId)
+                if (entity == null || entity.DmGuid != _userId)
                     return false;
                 return true;
             }

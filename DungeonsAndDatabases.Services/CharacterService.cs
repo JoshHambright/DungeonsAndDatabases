@@ -1,9 +1,12 @@
 ﻿using DungeonsAndDatabases.Data;
 using DungeonsAndDatabases.Models.CharacterModels;
+using DungeonsAndDatabases.Models.DND5EAPI;
+using DungeonsAndDatabases.Models.EquipmentModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +16,13 @@ namespace DungeonsAndDatabases.Services
     {
         //GUID
         private readonly Guid _userId;
+
+        //DND5EAPI Stuff
+        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly string _baseUrl = "https://www.dnd5eapi.co/api/";
+        private readonly string _dnd5eAPI = "https://www.dnd5eapi.co";
+        private readonly string _classes = "classes/";
+        private readonly string _races = "races/";
 
         public CharacterService(Guid userId)
         {
@@ -74,6 +84,41 @@ namespace DungeonsAndDatabases.Services
                     ctx
                         .Characters
                         .Single(c => c.CharacterID == id);
+
+                //Below code does the pulls from the DND5eAPI to see if the race and class are in their system
+                //If It doesn't find them it sets those properties as null
+                HttpResponseMessage race_response = await _httpClient
+                    .GetAsync(_baseUrl + _races + cat.Race);
+                var dnd5eRace = new Race_Short();
+                if (race_response.IsSuccessStatusCode)
+                {
+                    Race_Short result = await race_response.Content
+                        .ReadAsAsync<Race_Short>();
+                    dnd5eRace = result;
+                    dnd5eRace.url = _dnd5eAPI + dnd5eRace.url;
+                }
+                else
+                {
+                    dnd5eRace = null;
+                }
+                var dnd5eClass = new Classes_Short();
+                HttpResponseMessage class_response = await _httpClient
+                    .GetAsync(_baseUrl + _classes + cat.Class);
+                if (class_response.IsSuccessStatusCode)
+                {
+                    Classes_Short result = await class_response.Content
+                        .ReadAsAsync<Classes_Short>();
+                    dnd5eClass = result;
+                    dnd5eClass.url = _dnd5eAPI + dnd5eClass.url;
+                    dnd5eClass.starting_equipment = _dnd5eAPI + dnd5eClass.starting_equipment;
+                    dnd5eClass.class_levels = _dnd5eAPI + dnd5eClass.class_levels;
+                }
+                else
+                {
+                    dnd5eClass = null;
+                }
+
+
                 return
                     new CharacterDetail
                     {
@@ -81,7 +126,20 @@ namespace DungeonsAndDatabases.Services
                         CharacterName = cat.CharacterName,
                         Race = cat.Race,
                         Class = cat.Class,
-                        Level = cat.Level
+                        Level = cat.Level,
+                        Race_Details = dnd5eRace,
+                        Class_Details = dnd5eClass,
+                        Inventory = cat.Inventory.Select(
+                            x =>
+                                new EquipmentListView
+                                {
+                                    ID = x.ID,
+                                    Name= x.Name,
+                                    CharacterID = x.CharacterID,
+                                    EquipmentType = x.EquipmentType
+                                }
+                            ).ToList()
+
                     };
             }
         }
@@ -121,14 +179,14 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-
+        //Check credentials to see if the user owns a character
         public async Task<bool> CheckCharCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if (entity == null || entity.PlayerID != _userId)
                     return false;
                 return true;
             }

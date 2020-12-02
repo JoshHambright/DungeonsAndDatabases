@@ -93,7 +93,7 @@ namespace DungeonsAndDatabases.Services
             }
 
         }
-
+        // Method to check if you are a member of the campaign before showing you membership details
         public async Task<bool> CheckGetCredentials(int campaignId,int characterId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -102,12 +102,12 @@ namespace DungeonsAndDatabases.Services
                     .Where(
                         x => x.CampaignId == campaignId && x.CharacterID == characterId)
                         .FirstOrDefaultAsync();
-                if (entity.Campaign.DmGuid != _userId || entity.Character.PlayerID != _userId)
+                if (entity == null || entity.Campaign.DmGuid != _userId || entity.Character.PlayerID != _userId)
                     return false;
                 return true;
             }
         }
-        
+        //Method to check if user owns a campaign before editing or creating memberships
         public async Task<bool> CheckDMCredentials(int campaignId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -115,7 +115,7 @@ namespace DungeonsAndDatabases.Services
                 var entity = await ctx.Campaigns
                     .Where(
                     x => x.CampaignID == campaignId).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId)
+                if (entity == null || entity.DmGuid != _userId)
                     return false;
                 return true;
             }

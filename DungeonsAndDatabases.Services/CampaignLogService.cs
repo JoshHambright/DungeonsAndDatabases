@@ -119,13 +119,14 @@ namespace DungeonsAndDatabases.Services
             }
         }
 
+        // Check the Credentials of the DM of a campaign
         public async Task<bool> CheckMembershipandDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Campaigns
                     .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId || entity.Memberships.Any(x => x.Character.PlayerID != _userId))
+                if (entity == null || entity.DmGuid != _userId || entity.Memberships.Any(x => x.Character.PlayerID != _userId))
                 {
                     return false;
                 }
@@ -133,13 +134,15 @@ namespace DungeonsAndDatabases.Services
             }
         }
 
+        //Check the credentials to see if user owns a player
+
         public async Task<bool> CheckPlayerCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.CampaignLogs
                     .Where(e => e.LogID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if (entity == null || entity.PlayerID != _userId)
                     return false;
                 return true;
             }

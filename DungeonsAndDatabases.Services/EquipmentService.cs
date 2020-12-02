@@ -35,7 +35,7 @@ namespace DungeonsAndDatabases.Services
             {
                 Name = model.Name,
                 Notes = model.Notes,
-                CharacterID = model.ChararcterID,
+                CharacterID = model.CharacterID,
                 EquipmentType = model.EquipmentType
 
             };
@@ -110,7 +110,7 @@ namespace DungeonsAndDatabases.Services
             using (var ctx = new ApplicationDbContext())
             {
 
-                var equip = await ctx.Equipment.FindAsync();
+                var equip = await ctx.Equipment.FindAsync(ID);
                 ctx
                     .Equipment
                     .Single(e => e.ID == ID);
@@ -197,7 +197,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if(entity.PlayerID != _userId)
                     return false;
                 return true;
             }

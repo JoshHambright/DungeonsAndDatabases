@@ -156,7 +156,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Campaigns
                     .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId)
+                if (entity == null || entity.DmGuid != _userId)
                     return false;
                 return true;
             }

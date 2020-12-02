@@ -183,7 +183,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if (entity == null || entity.PlayerID != _userId)
                     return false;
                 return true;
             }

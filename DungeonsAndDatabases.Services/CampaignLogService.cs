@@ -125,7 +125,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Campaigns
                     .Where(e => e.CampaignID == id).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId || entity.Memberships.Any(x => x.Character.PlayerID != _userId))
+                if (entity == null || entity.DmGuid != _userId || entity.Memberships.Any(x => x.Character.PlayerID != _userId))
                 {
                     return false;
                 }
@@ -139,7 +139,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.CampaignLogs
                     .Where(e => e.LogID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if (entity == null || entity.PlayerID != _userId)
                     return false;
                 return true;
             }

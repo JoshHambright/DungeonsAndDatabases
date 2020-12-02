@@ -102,7 +102,7 @@ namespace DungeonsAndDatabases.Services
                     .Where(
                         x => x.CampaignId == campaignId && x.CharacterID == characterId)
                         .FirstOrDefaultAsync();
-                if (entity.Campaign.DmGuid != _userId || entity.Character.PlayerID != _userId)
+                if (entity == null || entity.Campaign.DmGuid != _userId || entity.Character.PlayerID != _userId)
                     return false;
                 return true;
             }
@@ -115,7 +115,7 @@ namespace DungeonsAndDatabases.Services
                 var entity = await ctx.Campaigns
                     .Where(
                     x => x.CampaignID == campaignId).FirstOrDefaultAsync();
-                if (entity.DmGuid != _userId)
+                if (entity == null || entity.DmGuid != _userId)
                     return false;
                 return true;
             }

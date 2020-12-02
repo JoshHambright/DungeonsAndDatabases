@@ -54,6 +54,7 @@ namespace DungeonsAndDatabases.Services
                 return query;
             }
         }
+        //Method to get a player details by player ID
         public async Task<PlayerDetails> GetPlayerById(Guid id)
         {
             using (var ctx = new ApplicationDbContext())

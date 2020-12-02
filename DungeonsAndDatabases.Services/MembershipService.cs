@@ -93,7 +93,7 @@ namespace DungeonsAndDatabases.Services
             }
 
         }
-
+        // Method to check if you are a member of the campaign before showing you membership details
         public async Task<bool> CheckGetCredentials(int campaignId,int characterId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -107,7 +107,7 @@ namespace DungeonsAndDatabases.Services
                 return true;
             }
         }
-        
+        //Method to check if user owns a campaign before editing or creating memberships
         public async Task<bool> CheckDMCredentials(int campaignId)
         {
             using (var ctx = new ApplicationDbContext())

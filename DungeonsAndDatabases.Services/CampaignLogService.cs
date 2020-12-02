@@ -119,6 +119,7 @@ namespace DungeonsAndDatabases.Services
             }
         }
 
+        // Check the Credentials of the DM of a campaign
         public async Task<bool> CheckMembershipandDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -132,6 +133,8 @@ namespace DungeonsAndDatabases.Services
                 return true;
             }
         }
+
+        //Check the credentials to see if user owns a player
 
         public async Task<bool> CheckPlayerCredentials(int id)
         {

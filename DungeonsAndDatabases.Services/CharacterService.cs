@@ -84,6 +84,9 @@ namespace DungeonsAndDatabases.Services
                     ctx
                         .Characters
                         .Single(c => c.CharacterID == id);
+
+                //Below code does the pulls from the DND5eAPI to see if the race and class are in their system
+                //If It doesn't find them it sets those properties as null
                 HttpResponseMessage race_response = await _httpClient
                     .GetAsync(_baseUrl + _races + cat.Race);
                 var dnd5eRace = new Race_Short();
@@ -176,7 +179,7 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-
+        //Check credentials to see if the user owns a character
         public async Task<bool> CheckCharCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())

@@ -5,6 +5,8 @@
     
     public partial class one : DbMigration
     {
+        //Migration for initial DB setup
+
         public override void Up()
         {
             CreateTable(

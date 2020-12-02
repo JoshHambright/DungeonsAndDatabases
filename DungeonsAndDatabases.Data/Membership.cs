@@ -10,6 +10,7 @@ namespace DungeonsAndDatabases.Data
 {
     public class Membership
     {
+        //Joining table to connect Characters to campaigns
         [Key, Column(Order = 0)]
         [ForeignKey(nameof(Campaign))]
         public int CampaignId { get; set; }

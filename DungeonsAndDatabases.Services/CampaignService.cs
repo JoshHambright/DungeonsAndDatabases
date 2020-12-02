@@ -85,7 +85,7 @@ namespace DungeonsAndDatabases.Services
                         DmGuid = entity.DmGuid,
                         DmName = entity.DungeonMaster.PlayerName,
                         Memberships = entity.Memberships.Select(
-                            e => 
+                            e =>  //Shows the campaign membership
                             new MembershipWithPlayerName { 
                                 CampaignId = e.CampaignId,
                                 CampaignName = e.Campaign.CampaignName,
@@ -95,7 +95,7 @@ namespace DungeonsAndDatabases.Services
                             }
                             ).ToList(),
                         CampaignLoot = entity.CampaignLoot.Select(
-                            e => 
+                            e => //Populates the campaign loot
                             new LootDetails
                             {
                                 LootID = e.LootID,
@@ -106,7 +106,7 @@ namespace DungeonsAndDatabases.Services
                             }
                             ).ToList(),
                         CampaignLog = entity.CampaignLog.Select(
-                            e =>
+                            e => //Populates the Log entries the user has on the campaign
                             new LogEntryListItem
                             {
                                 LogID = e.LogID,
@@ -149,7 +149,7 @@ namespace DungeonsAndDatabases.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
-
+        //Check the user to see if they are the DM of the campaign
         public async Task<bool> CheckDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())

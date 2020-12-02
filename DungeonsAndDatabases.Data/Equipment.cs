@@ -13,13 +13,13 @@ namespace DungeonsAndDatabases.Data
     public class Equipment
     {
         [Key]
-        public int ID { get; set; }
-        public string Name { get; set; } 
-        public string Notes { get; set; }
-        public virtual Character Character { get; set; }
-        public EquipmentType EquipmentType { get; set; }
+        public int ID { get; set; } // Equipment ID
+        public string Name { get; set; } // Equipment name (if corresponding to classes found in the open DND5E API will populate in Detail View)
+        public string Notes { get; set; } // Any custom notes the user wants to store about the equipment item
+        public virtual Character Character { get; set; } // Lazy loaded character that poses this equipment Item
+        public EquipmentType EquipmentType { get; set; } // Set to allow the detail view to pull the right data from the DND5eAPI
         [ForeignKey(nameof(Character))]
-        public int CharacterID { get; set; }        
+        public int CharacterID { get; set; }        // Character ID of the owner of this item
 
     }
 }

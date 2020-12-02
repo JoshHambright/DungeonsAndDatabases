@@ -112,6 +112,7 @@ namespace DungeonsAndDatabases.Services
             }
         }
 
+        //Check to see if the user is the DM of a campaign
         public async Task<bool> CheckDMCredentials(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -123,7 +124,7 @@ namespace DungeonsAndDatabases.Services
                 return true;
             }
         }
-
+        //Check to see if a user is the DM of a campaign
         public async Task<bool> CheckCreateCredentials(int campaignId)
         {
             using (var ctx = new ApplicationDbContext())

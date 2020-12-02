@@ -31,7 +31,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateEquipmentService();
-            var credentials = await service.CheckCharacterCredentials(model.ChararcterID);
+            var credentials = await service.CheckCharacterCredentials(model.CharacterID);
             if (credentials == false)
                 return Unauthorized();
             var result = await service.CreateEquipment(model);
@@ -85,7 +85,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         /// <returns>Ok if successful</returns>
         //Update an equipment Item
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateEquipmentAsync([FromUri] int id, [FromBody] EquipmentUpdate model)
+        public async Task<IHttpActionResult> UpdateEquipmentAsync([FromUri]int id, [FromBody] EquipmentUpdate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

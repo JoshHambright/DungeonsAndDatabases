@@ -708,6 +708,42 @@
             <param name="D"></param>
             <returns>Rolls a die and returns the result</returns>
         </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.InventoryController.CreateEquipmentAsync(DungeonsAndDatabases.Models.EquipmentModels.EquipmentCreate)">
+            <summary>
+            Creates a new equipment item in a characters inventory
+            </summary>
+            <param name="model"></param>
+            <returns>Ok if successful, Bad Request if model is invalid, Unathorized if character isn't owned by you, Internal server error if some other problem writing it</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.InventoryController.GetAllEquipmentForACharacterAsync(System.Int32)">
+            <summary>
+            Gets all the equipment for a specified character
+            </summary>
+            <param name="characterid"></param>
+            <returns>A list of equipment</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.InventoryController.GetEquipmentByIDAsync(System.Int32)">
+            <summary>
+            Gets the details on a specific equipment Item
+            </summary>
+            <param name="id"></param>
+            <returns>an Equipment object</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.InventoryController.UpdateEquipmentAsync(System.Int32,DungeonsAndDatabases.Models.EquipmentModels.EquipmentUpdate)">
+            <summary>
+            Update an equipment item 
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns>Ok if successful</returns>
+        </member>
+        <member name="M:DungeonsAndDatabases.WebAPI.Controllers.InventoryController.DeleteEquipmentAsync(System.Int32)">
+            <summary>
+            Deletes a specific piece of equipment
+            </summary>
+            <param name="id"></param>
+            <returns>200 if ok</returns>
+        </member>
         <member name="M:DungeonsAndDatabases.WebAPI.Controllers.MembershipController.Post(DungeonsAndDatabases.Models.MembershipModels.MembershipCreate)">
             <summary>
             Create a Membership

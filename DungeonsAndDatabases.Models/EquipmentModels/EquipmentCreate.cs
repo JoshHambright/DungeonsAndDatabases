@@ -11,7 +11,7 @@ namespace DungeonsAndDatabases.Models.EquipmentModels
     {
         public string Name { get; set; }
         public string Notes { get; set; }
-        public int ChararcterID { get; set; }
+        public int CharacterID { get; set; }
         public EquipmentType EquipmentType { get; set; }
     }
 }

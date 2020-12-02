@@ -44,6 +44,12 @@ https://trello.com/b/p2DQ82v9
 
 -------
 
+### Postman Collection:
+
+This repository contains a .json file called `Dungeons&Databases.postman_collection.json` file in the root directory you can load into Postman that contains a set of requests to get you started using the API.  You'll have to update the port number on the requests to match your local host port number for the project and update the tokens for the requests as you go.
+
+------
+
 ### Cloning the project:
 
 Project is hosted on Github at:

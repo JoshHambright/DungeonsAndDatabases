@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class Armor : Equipment
+    public class Armor : ApiEquipment
     {
         public string armor_category { get; set; }
         public Armor_Class armor_class { get; set; }

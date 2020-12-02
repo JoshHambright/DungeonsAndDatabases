@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsAndDatabases.Models.DND5EAPI
 {
-    public class Weapon : Equipment
+    public class Weapon : ApiEquipment
     {
         public string weapon_category { get; set; }
         public string weapon_range { get; set; }

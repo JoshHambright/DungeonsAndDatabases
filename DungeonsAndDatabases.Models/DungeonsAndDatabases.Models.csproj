@@ -62,6 +62,7 @@
     <Compile Include="DiceModels\DiceSingle.cs" />
     <Compile Include="DND5EAPI\ApiAdventureGear.cs" />
     <Compile Include="DND5EAPI\ApiArmor.cs" />
+    <Compile Include="DND5EAPI\ApiMagicItem.cs" />
     <Compile Include="DND5EAPI\Damage.cs" />
     <Compile Include="DND5EAPI\ApiEquipment.cs" />
     <Compile Include="DND5EAPI\MagicItem.cs" />

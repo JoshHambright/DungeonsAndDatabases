@@ -76,7 +76,6 @@
     <Compile Include="MembershipService.cs" />
     <Compile Include="CharacterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnGuidService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

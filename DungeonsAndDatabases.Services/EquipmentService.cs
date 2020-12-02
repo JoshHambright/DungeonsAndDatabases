@@ -219,7 +219,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Characters
                         .Where(e => e.CharacterID == id).FirstOrDefaultAsync();
-                if (entity.PlayerID != _userId)
+                if (entity == null || entity.PlayerID != _userId)
                     return false;
                 return true;
             }
@@ -231,7 +231,7 @@ namespace DungeonsAndDatabases.Services
             {
                 var entity = await ctx.Equipment
                         .Where(e => e.ID == id).FirstOrDefaultAsync();
-                if (entity.Character.PlayerID != _userId)
+                if (entity == null || entity.Character.PlayerID != _userId)
                     return false;
                 return true;
             }

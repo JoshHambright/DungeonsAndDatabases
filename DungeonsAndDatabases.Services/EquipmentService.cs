@@ -28,6 +28,24 @@ namespace DungeonsAndDatabases.Services
             _userId = userId;
         }
 
+        //Create Equipment
+        public async Task<bool> CreateEquipment(EquipmentCreate model)
+        {
+            var entity = new Equipment()
+            {
+                Name = model.Name,
+                Notes = model.Notes,
+                CharacterID = model.ChararcterID,
+                EquipmentType = model.EquipmentType
+
+            };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Equipment.Add(entity);
+                return await ctx.SaveChangesAsync() == 1;
+            }
+        }
+
         //public async Task<Equipment> GetEquipment(string equipment)
         //{
         //    HttpResponseMessage response = await _httpClient.GetAsync(_baseUrl + _equipment + equipment);
@@ -65,6 +83,28 @@ namespace DungeonsAndDatabases.Services
         //    return null;
         //}
 
+        public async Task<IEnumerable<EquipmentListView>> GetEquipmentByCharacterId(int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Equipment
+                        .Where(e => e.CharacterID == characterId)
+                        .Select(
+                            e =>
+                                new EquipmentListView
+                                {
+                                    ID = e.ID,
+                                    Name = e.Name,
+                                    CharacterID = e.CharacterID,
+                                    EquipmentType = e.EquipmentType
+                                }
+                        );
+                return await query.ToListAsync();
+            }
+        }
+
         public async Task<EquipmentDetails> GetEquipmentByEquipmentID(int ID)
         {
             using (var ctx = new ApplicationDbContext())
@@ -82,21 +122,21 @@ namespace DungeonsAndDatabases.Services
                     if (result.Equipment_Category.name == "Weapon")
                     {
                         HttpResponseMessage weaponResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
-                        Weapon weapon = await weaponResponse.Content.ReadAsAsync<Weapon>();
+                        ApiWeapon weapon = await weaponResponse.Content.ReadAsAsync<ApiWeapon>();
                         //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
                         result = weapon;
                     }
                     if (result.Equipment_Category.name == "Armor")
                     {
                         HttpResponseMessage armorResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
-                        Armor armor = await armorResponse.Content.ReadAsAsync<Armor>();
+                        ApiArmor armor = await armorResponse.Content.ReadAsAsync<ApiArmor>();
                         //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
                         result = armor;
                     }
                     if (result.Equipment_Category.name == "Adventuring Gear")
                     {
                         HttpResponseMessage gearResponse = await _httpClient.GetAsync(_baseUrl + _equipment + equip.Name);
-                        AdventureGear gear = await gearResponse.Content.ReadAsAsync<AdventureGear>();
+                        ApiAdventureGear gear = await gearResponse.Content.ReadAsAsync<ApiAdventureGear>();
                         //Equipment weapon = await response.Content.ReadAsAsync<Equipment>();
                         result = gear;
                     }

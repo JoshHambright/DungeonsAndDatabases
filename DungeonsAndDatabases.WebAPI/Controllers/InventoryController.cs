@@ -1,5 +1,6 @@
 ﻿using DungeonsAndDatabases.Models.EquipmentModels;
 using DungeonsAndDatabases.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             var credentials = await service.CheckEquipmentCredentials(id);
             if (credentials == false)
                 return Unauthorized();
-            var equipment = await service.GetEquipmentByEquipmentId(id);
+            var equipment = await service.GetEquipmentByEquipmentID(id);
             if (equipment == null)
                 return NotFound();
             return Ok(equipment);

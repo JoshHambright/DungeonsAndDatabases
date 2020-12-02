@@ -30,7 +30,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateEquipmentService();
-            var credentials = await service.CheckCreateCredentials(model.ChararcterID);
+            var credentials = await service.CheckCharacterCredentials(model.ChararcterID);
             if (credentials == false)
                 return Unauthorized();
             var result = await service.CreateEquipment(model);

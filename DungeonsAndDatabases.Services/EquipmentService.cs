@@ -163,12 +163,12 @@ namespace DungeonsAndDatabases.Services
 
 
 
-        public async Task<bool> UpdateEquipment(string equipment, EquipmentUpdate model)
+        public async Task<bool> UpdateEquipment(int id, EquipmentUpdate model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Equipment
-                        .Where(e => e.Character.PlayerID == _userId).FirstOrDefaultAsync();
+                        .Where(e => e.ID == id).FirstOrDefaultAsync();
                 entity.Name = model.Name;
                 entity.Notes = model.Notes;
                 entity.EquipmentType = model.EquipmentType;
@@ -183,7 +183,7 @@ namespace DungeonsAndDatabases.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = await ctx.Equipment
-                    .Where(e => e.CharacterID == id && e.Character.PlayerID == _userId).FirstOrDefaultAsync();
+                    .Where(e => e.ID == id).FirstOrDefaultAsync();
 
                 ctx.Equipment.Remove(entity);
                 return await ctx.SaveChangesAsync() == 1;

@@ -85,7 +85,7 @@ namespace DungeonsAndDatabases.WebAPI.Controllers
         /// <returns>Ok if successful</returns>
         //Update an equipment Item
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateEquipmentAsync([FromUri] int id, [FromBody] EquipmentUpdate model)
+        public async Task<IHttpActionResult> UpdateEquipmentAsync([FromUri]int id, [FromBody] EquipmentUpdate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

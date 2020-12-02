@@ -10,6 +10,7 @@ namespace DungeonsAndDatabases.Data
 {
     public class LogEntry
     {
+        //Campaign Log entry object
         [Key]
         public int LogID { get; set; }
         public string Message { get; set; }

@@ -10,6 +10,7 @@ namespace DungeonsAndDatabases.Data
 {
     public class Loot
     {
+        //Class for Campaign Loot.  Allows DM's to store custom party loot in the campaign
         [Key]
         public int LootID { get; set; }
         public string Name { get; set; }

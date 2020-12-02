@@ -10,6 +10,7 @@ namespace DungeonsAndDatabases.Data
 {
     public class Campaign
     {
+        //Campaign Data Class
         [Key]
         public int CampaignID { get; set; } //Campaign ID number
         [Required]

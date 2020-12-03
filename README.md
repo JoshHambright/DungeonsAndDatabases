@@ -90,7 +90,7 @@ Stores basic information about a character, who owns the character and which cam
   * _You must create a player before you can create a character._
   * `POST api/Character` Creates a Character. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`
   * `GET api/Character` Shows all of the characters associated with your Player ID
-  * `GET api/Character/{id}` Shows the details on a specified `Character ID`. If the class and race are in the DND5EAPI(https://www.dnd5eapi.co/) database details for the race and class will be loaded into the returned information as well.
+  * `GET api/Character/{id}` Shows the details on a specified `Character ID`. If the class and race are in the [DND5EAPI](https://www.dnd5eapi.co/) database details for the race and class will be loaded into the returned information as well.
   * `PUT api/Character/{id}` Updates a Character based on a specified `Character ID`. Body of request should contain `Character Name`, `Race`, `Class`, and `Level`. You can only edit characters you created.
   * `DELETE api/Character/{id}` Deletes a character based on a specified `Character ID`. Can only delete characters you created.
 * **Inventory**
